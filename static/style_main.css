@@ -1,0 +1,219 @@
+/* Fonts definition */
+@font-face {
+    font-family: 'Roboto-Light';
+    src: url('fonts/Roboto/Roboto-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+/*--------------------------------------------------------*/
+
+
+body{
+    padding: 0;
+    margin: 0;
+} 
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+img {
+    cursor:  pointer;
+}
+
+#map1{
+    padding-top: 5%;
+    height: 77%;
+    width: 49%;
+    display: inline-block;
+}
+
+#map2{
+    padding-top: 5%;
+    height: 77%;
+    width: 49%;
+    display: inline-block;
+}
+
+#georef_btn {
+     font-family: 'Roboto-Medium';
+     font-size: 20px;
+}
+
+#perform_btn {
+     font-family: 'Roboto-Medium';
+     font-size: 20px;
+}
+
+#header_title {
+  margin-top: 10px;
+  width: 30%;
+  font-size: 300%;
+  text-align: center;
+  font-family: 'Roboto-Bold'
+}
+
+body {
+    color: white;
+    background: #8a8781;
+}
+
+
+form * {
+  display: block;
+  margin: 10px;
+}
+
+.info {
+    padding: 6px 8px;
+    font-size: 14px;
+    font-family: 'Roboto-Light'
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.legend {
+    line-height: 20px;
+    color: #555;
+}
+
+.legend i {
+    width: 40px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+ul {
+  font-family: 'Roboto-Bold';
+}
+
+.center{
+  margin-top: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  min-width: 200px;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    width: 30%;
+
+}
+
+.grid-item {
+  background-color: crimson;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  font-size: 15px;
+  font-family: 'Roboto-Bold';
+  text-align: center;
+}
+
+
+/*Gallery*/
+div.gallery {
+  border: 4px solid #ccc;
+  background-color: #a8a6a1ff;
+}
+
+div.gallery:hover {
+  border: 4px solid crimson;
+}
+
+div.gallery img {
+  border: 1px solid #777;
+}
+
+div.desc {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Roboto-Bold';
+  color: crimson;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 3px 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+a {
+    margin-left: 5%;
+}
+
+ #circle {
+      width: 40px;
+      height: 40px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+      background: red;
+      margin-right: 5px;
+      margin-left: 5px;
+      padding-top: 10px;
+      padding-left: 4px;
+      font-family: 'Roboto-Light';      
+}
+
+#circles {
+    margin: 0 140px;
+    display: inline-block;
+}

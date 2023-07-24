@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Space Syntax</title>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="leaflet\leaflet.css" />
+    <link rel="stylesheet" href="geoman\leaflet-geoman.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="geoman\leaflet-geoman.min.js"></script>
+    <script src="http://mejackreed.github.io/Leaflet-IIIF/leaflet-iiif.js"></script>  
+    <script src="orthomode\pmOrtho.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    <script src="leaflet/choropleth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js" integrity="sha512-zInFF17qBFVvvvFpIfeBzo7Tj7+rQxLeTJDmbxjBz5/zIr89YVbTNelNhdTT+/DCrxoVzBeUPVFJsczKbB7sew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="getRequest.js"></script>
+    <script type="text/javascript" src="urls.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+
+</head>
+<body>
+    <header >
+        <div id="header_title" class="center">
+            NetworkX Analysis    
+        </div>
+        <div class="popup" onclick="myFunction()">
+            <span class="popuptext" id="myPopup">Changes Saved!</span>
+        </div>      
+    </header>
+  
+<div id="map" >
+    <script>
+        function myFunction() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+            console.log("POPUP")
+        }
+        var inputFeatures = L.featureGroup(); // Features on maps
+        document.addEventListener("DOMContentLoaded", function() {
+
+            var IMAGE_NAME = window.location.search.replace('?image=', '')
+
+            var url = `${IIIF_URL}${IMAGE_NAME}/info.json`
+            var urlregex = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/;
+
+            if (urlregex.test(url)) {
+                var iiif_url = url;
+            }
+
+            var map = L.map('map', {
+                center: [180,180],
+                crs: L.CRS.Simple,
+                zoom: 0,
+                maxZoom: 15,
+                // minZoom:1
+            });
+
+            var iiifMap = L.tileLayer.iiif(iiif_url, {
+                setMaxBounds: true,
+                fitBounds: true
+
+            }).addTo(map);
+
+            PROPER_ZOOM = doAjaxThings(IMAGE_NAME, url, map).then(function(values) {
+                    let zoom = values[0];
+                    let vals_arr = values[1][0]
+                    let min_val = values[1][1];
+                    let max_val = values[1][2];
+                    console.log(zoom);
+                    var digitButton = document.getElementById("digit_btn");
+                    digitButton.addEventListener("click", function() {
+                        window.location.href = `${EDITOR_URL}?image=${IMAGE_NAME}`
+                    });
+                    var georeferenceButton = document.getElementById("georef_btn");
+                    georeferenceButton.addEventListener("click", function() {
+                        window.location.href = `${GEOREFERENCE_URL}?image=${IMAGE_NAME}`
+                    });
+                     var downloadButton = document.getElementById("download_btn");
+                    downloadButton.addEventListener("click", function() {
+                        download2(IMAGE_NAME);
+                    });
+
+                     // Map events:
+                    map.on('pm:create', (e) => {
+                        added_layer = e.layer;
+                        inputFeatures.addLayer(added_layer);
+                        console.log(inputFeatures);
+                        geojson_to_save = getFeaturesInPixels(map, zoom);
+                        console.log(geojson_to_save);
+                        saveVector(geojson_to_save, IMAGE_NAME, map, zoom);
+                        added_layer.on('pm:update', (a) => {
+                            console.log("CHange: ", a);
+                        })
+                    });
+                  
+                    map.on('pm:remove', (e) => {
+                        inputFeatures.removeLayer(e.layer);
+                        console.log(e);
+                        console.log(inputFeatures);
+                        geojson_to_save = getFeaturesInPixels(map, zoom);
+                        saveVector(geojson_to_save, IMAGE_NAME, map, zoom);
+                   });
+
+                    inputFeatures.eachLayer(function(layer){
+                        layer.on('pm:edit', (e) => {
+                          geojson_to_save = getFeaturesInPixels(map, zoom);
+                          saveVector(geojson_to_save, IMAGE_NAME, map, zoom);
+                        });
+                    });
+
+
+                var legend = L.control({position: 'bottomright'});
+                legend.onAdd = function (map) {
+                    console.log(vals_arr);
+                    var div = L.DomUtil.create('div', 'info legend'),
+                        grades = chroma.limits(vals_arr, 'e', 4),
+                        labels = ['Betweenness centrality'];
+                        div.innerHTML += '<ul>' + labels.join('') + '</ul>'
+
+                    // loop through our density intervals and generate a label with a colored square for each interval
+                    for (var i = 0; i < grades.length; i++) {
+                        div.innerHTML +=
+                            '<i style="background:' + getColor(grades[i], min_val, max_val) + '"></i> ' +
+                            grades[i].toFixed(3) + (grades[i + 1] ? '&ndash;' + grades[i + 1].toFixed(3) + '<br>' : '+');
+                    }
+
+                    return div;
+                 };
+
+                legend.addTo(map);
+            });
+            
+            // Adding controls
+            map.pm.addControls({
+                position: 'topleft',
+                drawPolyline: true,
+                drawMarker: false,
+                drawCircleMarker: false,
+                drawRectangle: false,
+                drawPolygon: false,
+                drawCircle: false,
+                drawText: false,
+                cutPolygon: false
+            });
+             map.pm.addControls({
+                position: 'topleft',
+                drawPolyline: true,
+                drawMarker: false,
+                drawCircleMarker: false,
+                drawRectangle: false,
+                drawPolygon: false,
+                drawCircle: false,
+                drawText: false,
+                cutPolygon: false
+            });
+            // Options for map       
+            map.pm.setGlobalOptions({ 
+                snappable: true, 
+                snapangle: true,
+                snapDistance:30,
+                snapAngleInterval: 90, 
+                templineStyle:{ color: 'blue' },
+                hintlineStyle:{ color: 'red' },
+                pathOptions: {color: 'blue'},
+                editable: true
+                // allowSelfIntersection: false
+            });
+        });
+
+        async function doAjaxThings(imagename, info_url, map_object) {
+            let iiif_info = await makeRequest("GET", info_url);
+            var info_json = JSON.parse(iiif_info);
+
+            var img_width = info_json.width
+            var img_height = info_json.height
+            var proper_zoom = getProperZoom(img_width, img_height, map_object);
+            
+            console.log("proper_zoom: ", proper_zoom);
+            let latest_res = await makeRequest("GET", `${API_URL}getLatestView/${imagename}`);
+            let min_max_arr = await addLatestVectorToMap(latest_res, map_object, proper_zoom);
+            
+            let numGcps = await makeRequest("GET", `${API_URL}getNumGcps/${imagename}`);
+            updateGcpsLabel(numGcps);
+
+            return [proper_zoom, min_max_arr];
+        }
+           async function download2(imagename) {
+            let file_response = await makeRequestBlob("GET", `${API_URL}download_shp/${imagename}/networkx`);
+            var url = URL.createObjectURL(file_response);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `networkx_${imagename.split(".")[0]}.zip`); //set download attribute to link
+            document.body.appendChild(link);
+            link.click(); // this will download file.zip
+        }
+
+        
+        function updateGcpsLabel(n_gcps) {
+            var nGcps = Number(n_gcps)
+            var counter = document.getElementById("gcpsCounter");
+            var item = document.getElementById("item-gcpsCounter");
+            var perform_btn = document.getElementById("perform_btn");
+            counter.innerHTML = `GCPs: ${nGcps}`;
+              
+            if (nGcps < 1) {
+                item.style.backgroundColor = 'red';
+                perform_btn.style.display='none';
+            }
+                
+            else if (nGcps < 4) {
+                item.style.backgroundColor = 'blue';
+                perform_btn.style.display='block';
+            }
+            else
+                item.style.backgroundColor = 'green';
+        }
+    
+        function addLatestVectorToMap(responseText, map_object, zoom) {
+            var val_array = []
+            inputFeatures.eachLayer(function(layer){
+                inputFeatures.removeLayer(layer);
+                layer.remove();     
+            });
+                    
+            var geojson_res = JSON.parse(responseText);
+
+            bet_values = []
+            for (let i=0; i< geojson_res.features.length; ++i){
+                bet_values.push(Number(geojson_res.features[i].properties.bet_cen_w));
+            }
+            min_max_arr = get_min_max_from_array(bet_values);
+            min_bet_value = min_max_arr[0];
+            max_bet_value = min_max_arr[1];
+
+            var geojson_layer = L.geoJson(geojson_res,{
+                coordsToLatLng: function (coords) {
+                    new_coords = map_object.unproject([coords[0],coords[1]], zoom);
+                    return new L.LatLng(new_coords.lat, new_coords.lng);
+                },
+                style: function(feature) {return styling(feature, min_bet_value, max_bet_value)},
+                onEachFeature: function (feature, layer) {
+                  layer.bindTooltip('Value: ' + feature.properties.bet_cen_w.toFixed(2)) ;
+                }
+            }).addTo(map_object)
+
+
+            geojson_layer.eachLayer(function (layer) {
+              inputFeatures.addLayer(layer);
+            });
+            return [bet_values, min_bet_value, max_bet_value];
+        }
+
+        function get_min_max_from_array(arr) {
+            let min_bet_value = Math.min(...arr);
+            let max_bet_value = Math.max(...arr);
+            return [min_bet_value, max_bet_value]
+        }
+
+        function download(filename, text) {
+          var element = document.createElement('a');
+          element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(text)));
+          element.setAttribute('download', filename);
+
+          element.style.display = 'none';
+          document.body.appendChild(element);
+
+          element.click();
+
+          document.body.removeChild(element);
+        }
+
+        function getColor(d, min_val, max_val) {        
+            var mapScale = chroma.scale(['green', 'yellow', 'red']).mode('lch').domain([min_val,max_val], 5, 'e');
+            return mapScale(d)
+        }
+
+        colors = chroma.scale(['#ff0000','#2A4858']).mode('lch').colors(6)
+        function styling(feature, min_val, max_val) {        
+            return {
+                weight: 7,
+                opacity: 1,
+                color: getColor(feature.properties.bet_cen_w, min_val, max_val),
+                dashArray: '1',
+                fillOpacity: 1,
+            };
+        }
+
+         function goToGeoreferenceEditor() {
+               window.location.href = `${GEOREFERENCE_URL}?image=${IMAGE_NAME}`
+        }
+
+        </script>
+    </div>
+
+    <div class='grid-container'>
+        <div class="grid-item" >
+            <button type="button" id="georef_btn"  onclick="goToGeoreferenceEditor()" style="height: 100%; width: 100%; text-align: center;">Georeference Map</button>
+        </div>
+        <div class="grid-item" id='item-gcpsCounter' >
+            <p id='gcpsCounter' style=" font-size:15px; text-align: center;"></p>
+        </div>
+        <div class="grid-item" >
+            <button type="button" id="digit_btn"   style="height: 100%; width: 100%; text-align: center;">Digitizate Map</button > 
+        </div>
+        <div class="grid-item"  style="background-color: blue;">
+            <button type="button" id="download_btn"   style="height: 100%; width: 100%; text-align: center; ">Download SHP</button > 
+        </div>
+    </div>
+
+</body>
+</html>

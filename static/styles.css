@@ -1,0 +1,244 @@
+/* Fonts definition */
+@font-face {
+    font-family: 'Roboto-Light';
+    src: url('fonts/Roboto/Roboto-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+/*--------------------------------------------------------*/
+
+
+
+
+#loadingImg {
+    width: 100%;
+    height: 100%;
+}
+.center-loading {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+html, body, 
+
+#map{
+  height: 94%;
+  width: 100%;
+  margin: 0;
+}
+
+
+
+#georef_btn {
+     font-family: 'Roboto-Medium';
+     font-size: 15px;
+}
+
+#perform_btn {
+     font-family: 'Roboto-Medium';
+     font-size: 15px;
+}
+
+#perform_ss_btn {
+     font-family: 'Roboto-Medium';
+     font-size: 15px;
+}
+
+#clear_btn {
+     font-family: 'Roboto-Regular';
+     font-size: 15px;
+}
+
+#digit_btn {
+     font-family: 'Roboto-Medium';
+     font-size: 15px;
+}
+
+#download_btn {
+     font-family: 'Roboto-Medium';
+     font-size: 15px;
+}
+
+#back {
+     font-family: 'Roboto-Medium';
+     font-size: 15px;
+}
+
+
+#header_title {
+  margin-top: 10px;
+  width: 30%;
+  font-size: 200%;
+  text-align: center;
+  font-family: 'Roboto-Bold'
+}
+
+body {
+    color: white;
+    background: #8a8781;
+}
+
+
+form * {
+  display: block;
+  margin: 10px;
+}
+
+.info {
+    padding: 6px 8px;
+    font-size: 14px;
+    font-family: 'Roboto-Light'
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.legend {
+    line-height: 20px;
+    color: #555;
+}
+.legend i {
+    width: 40px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+ul {
+  font-family: 'Roboto-Bold';
+}
+
+.center{
+  margin-top: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  min-width: 200px;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    padding: 10px;
+    width: 40%;
+}
+
+.grid-item {
+  background-color: crimson;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  font-size: 10px;
+  font-family: 'Roboto-Bold';
+  text-align: center;
+  height: 40px;
+  width: 200px;
+}
+
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 10%;
+    left: 85%;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    /*height: 200px;*/
+    background-color: crimson;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+    font-family: 'Roboto-Medium';
+     font-size: 20px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    opacity: 0;
+    visibility: visible;
+    -webkit-animation: fadeIn 3s;
+    animation: fadeIn 3s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    50% {opacity:1 ;}
+    100%{opacity:0;}
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    50% {opacity:1 ;}
+    100%{opacity:0;}
+}
+
+
+#attrPicker {
+    color: crimson;
+    position: absolute;
+    top: 100px;
+    right: 10px;
+    height: 50px;
+    z-index: 1000;
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    border: 2px solid #8a8781;
+}

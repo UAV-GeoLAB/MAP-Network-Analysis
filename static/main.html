@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Space Syntax</title>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="style_main.css">
+    <link rel="stylesheet" href="leaflet\leaflet.css" />
+    <link rel="stylesheet" href="geoman\leaflet-geoman.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="geoman\leaflet-geoman.min.js"></script>
+    <script src="http://mejackreed.github.io/Leaflet-IIIF/leaflet-iiif.js"></script>  
+    <script src="orthomode\pmOrtho.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    <script src="leaflet/choropleth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js" integrity="sha512-zInFF17qBFVvvvFpIfeBzo7Tj7+rQxLeTJDmbxjBz5/zIr89YVbTNelNhdTT+/DCrxoVzBeUPVFJsczKbB7sew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="getRequest.js"></script>
+    <script type="text/javascript" src="urls.js"></script>
+</head>
+
+<body>
+    <header >
+        <div id="header_title" class="center">
+            Map Collection    
+        </div>      
+    </header>
+
+
+ <div class='grid-container'>
+    <div class="grid-item" id='item-gcpsCounter' style="background-color:crimson;">
+        <!-- <p id='gcpsCounter'></p> -->
+        <img src="ui/upload-image2-64px.png"  style="cursor:pointer;" onclick="document.getElementById('fileInput').click();" />
+        <label>UPLOAD IMAGE</label>
+    </div>
+    <input type="file"  id="fileInput" accept="image/*" value="Choose a Map" style="display:none">
+    <div class="grid-item" id='item-gcpsCounter' style="background-color:#8a8781; border: none;">
+        <img id='loadingImg'   style='display:none;' src='ui/loader.gif' style="width: 50%;" />
+    </div>
+</div>
+<br>
+
+<script type="text/javascript">
+    async function checkStatus(imagename) {
+        let nGcps = await makeRequest("GET", `${API_URL}getNumGcps/${imagename}`);
+        let nVector = await makeRequest("GET", `${API_URL}getNumVector/${imagename}`);
+        let nResult = await makeRequest("GET", `${API_URL}getNumResult/${imagename}`);
+        return [Number(nGcps), Number(nVector), Number(nResult)]
+    }
+     
+    $(document).ready(function(){
+        getImages();
+        $("#fileInput").on('change',function(){
+            //do whatever you want
+            uploadFile();
+            
+        });
+    });
+
+    function getImages() {
+        var images = [];
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", `${API_URL}getImages/`);
+    
+        xhr.send(null);
+        xhr.onload = function() {
+            show_images(JSON.parse(xhr.response));
+        }
+    }
+        
+    function show_images(img_dict) {
+        for (const [key, value] of Object.entries(img_dict)) {
+            checkStatus(value).then(function(params) {
+            var div_responsive = document.createElement("div");
+            div_responsive.classList.add("responsive");
+
+            var div_gallery = document.createElement("div");
+            div_gallery.classList.add("gallery");
+            div_responsive.appendChild(div_gallery);
+
+
+            var img_url = `${IIIF_URL}${value}/full/!400,300/0/default.jpg`    
+
+            var a = document.createElement("a");
+            a.setAttribute("target", "_blank");                
+            div_gallery.appendChild(a);
+
+            var img = document.createElement("img");
+            img.setAttribute("src", img_url)
+            var mw = 0;
+            img.onload = function() {
+                 mw = (400 - this.naturalWidth)/2
+                 mh = (400 - this.naturalHeight)/2
+                 this.style.marginLeft = `${mw}px`;
+                 this.style.marginRight = `${mw}px`;
+                 this.style.marginTop = `${mh}px`;
+                 this.style.marginBottom = `${mh}px`;
+            }
+                
+            a.setAttribute("style", "width: 400px; height: 400px; display: block;" )
+            a.appendChild(img);
+
+            var circles = document.createElement("div");
+            circles.id = "circles";
+
+            var vector_circle = document.createElement("div");
+            vector_circle.id = "circle";
+            vector_circle.innerHTML = "VEC";
+            vector_circle.style.display = "inline-block";
+            vector_circle.style.cursor = "pointer";
+
+            vector_circle.addEventListener('click', function() {
+               window.open(`${EDITOR_URL}?image=${value}`);
+            }) ;
+
+            var result_circle = document.createElement("div");
+            result_circle.id = "circle";
+            result_circle.innerHTML = "SHP";
+            result_circle.style.display = "inline-block";
+            result_circle.style.cursor = "pointer";
+
+            result_circle.addEventListener('click', function() {
+               download2(value);
+            }) 
+            
+            var georef_circle = document.createElement("div");
+            georef_circle.id = "circle";
+            georef_circle.innerHTML = "GEO";
+            georef_circle.style.display = "inline-block";
+            georef_circle.style.cursor = "pointer";
+
+            georef_circle.addEventListener('click', function() {
+               window.open(`${GEOREFERENCE_URL}?image=${value}`);
+            }) ;
+
+
+            a.setAttribute("href", `${EDITOR_URL}?image=${value}`);
+            if (Number(params[0]) > 0) {
+                a.setAttribute("href", `${EDITOR_URL}?image=${value}`);
+                georef_circle.style.background = "green";
+            }
+            else {
+                georef_circle.style.background = "red";
+                a.setAttribute("href", `${GEOREFERENCE_URL}?image=${value}`);
+            }
+
+
+            if (Number(params[1]) > 0) 
+                vector_circle.style.background = "green";
+            else
+                vector_circle.style.background = "red";
+
+
+             if (Number(params[2]) > 0) {
+                result_circle.style.background = "green";
+                a.setAttribute("href", `${VIEWER_URL}?image=${value}`);
+             }
+            else {
+                result_circle.style.background = "red";
+            }
+
+            circles.appendChild(georef_circle);
+            circles.appendChild(vector_circle);
+            circles.appendChild(result_circle);
+            div_gallery.appendChild(circles);
+
+            var div_desc = document.createElement("div");
+            div_desc.classList.add("desc");
+            div_desc.innerHTML = value;
+            div_gallery.appendChild(div_desc);
+            document.body.appendChild(div_responsive);
+            }
+        )}
+    }
+
+    
+    async function download2(imagename) {
+        let file_response = await makeRequestBlob("GET", `${API_URL}download_shp/${imagename}`);
+        var url = URL.createObjectURL(file_response);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `${imagename.split(".")[0]}.zip`); //set download attribute to link
+        document.body.appendChild(link);
+        link.click(); // this will download file.zip
+    }
+  
+
+
+  function uploadFile() {
+        var loader = document.getElementById('loadingImg');
+        loader.style.display = "block";
+        loader.style.width = "25%";
+        
+        var formData = new FormData();
+        var fileInput = document.getElementById('fileInput');
+
+        if (fileInput.files[0]) {
+            formData.append("classified_id", 2);
+            formData.append("file", fileInput.files[0]);
+            axios({
+                method: 'post',
+                url: `${API_URL}send_map/`,
+                data: formData,
+            })
+            .then(response => {
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        }
+  }
+
+  function open_editor(img) {
+        window.open(`${EDITOR_URL}?image=${img.name}`)
+  }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Space Syntax</title>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="style_georef.css">
+    <link rel="stylesheet" href="leaflet\leaflet.css" />
+    <link rel="stylesheet" href="geoman\leaflet-geoman.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="geoman\leaflet-geoman.min.js"></script>
+    <script src="http://mejackreed.github.io/Leaflet-IIIF/leaflet-iiif.js"></script>  
+    <script src="orthomode\pmOrtho.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    <script src="leaflet/choropleth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js" integrity="sha512-zInFF17qBFVvvvFpIfeBzo7Tj7+rQxLeTJDmbxjBz5/zIr89YVbTNelNhdTT+/DCrxoVzBeUPVFJsczKbB7sew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="getRequest.js"></script>
+    <script type="text/javascript" src="urls.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+</head>
+
+<body>
+    <header >
+        <div id="header_title" class="center">
+            Georeference Map    
+        </div>      
+    </header>
+
+<div id="map1"> </div>
+<div id="map2"> </div>
+<div class='grid-container'>
+    <div class="grid-item" style="background-color: green;">
+        <button type="button" id="georef_btn"  onclick="validateMarkers()" style="height: 100%; width: 100%; text-align: center;">Send GCPs</button>
+    </div>
+
+    <div class="grid-item" style="background-color: crimson;">
+        <button type="button" id="perform_btn"  onclick="clearGCPs()" style="height: 100%; width: 100%; text-align: center; ">Clear GCPs</button>
+    </div>
+
+    <div class="grid-item" style="background-color: blue;">
+        <button type="button" id="perform_btn"  onclick="goToEditor()" style="height: 100%; width: 100%; text-align: center;">Go to Drawing Editor</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var IMAGE_NAME = window.location.search.replace('?image=', '')
+    var url = `${IIIF_URL}${IMAGE_NAME}/info.json`
+
+    var urlregex = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/;
+    if (urlregex.test(url)) {
+        var iiif_url = url;
+    }
+
+    var map1 = L.map('map1', {
+        center: [20,0],
+        crs: L.CRS.Simple,
+        zoom: 0,
+        maxZoom: 5,
+        // minZoom:0,
+    });
+
+    var PROPER_ZOOM = null;
+    async function schemaPageHandler() {
+        var iiif_info = await makeRequest('GET', iiif_url, 'json')
+        var info_json = JSON.parse(iiif_info);
+        var width_image = info_json.width
+        var height_image = info_json.height
+        PROPER_ZOOM = getProperZoom(width_image, height_image, map1);
+        console.log(PROPER_ZOOM)
+        getGCPs();
+    }
+    schemaPageHandler();
+    var olintMap = L.tileLayer.iiif(iiif_url, {
+            setMaxBounds: true,
+            fitBounds: true
+    }).addTo(map1);
+
+    var map2 = L.map('map2', {
+        center: [0,0],
+        zoom: 2,
+        minZoom:2,
+        maxZoom:16
+    });
+
+    osm_map = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map2);
+    mqi = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}");
+
+    var refLayers = {
+        'OSM': osm_map,
+        'Satellite': mqi
+    };
+    L.control.layers(refLayers).addTo(map2);
+
+    map1.pm.addControls({
+        position: 'topleft',
+        drawPolyline: false,
+        drawMarker: false,
+        drawCircleMarker: true,
+        drawRectangle: false,
+        drawPolygon: false,
+        drawCircle: false,
+        cutPolygon: false,
+        rotateMode: false,
+        editMode: false,
+        drawText: false
+    });
+    
+   map1.pm.setGlobalOptions({ 
+        snappable: true, 
+        snapangle: true,
+        snapAngleInterval: 90, 
+        templineStyle:{ color: 'red' },
+        hintlineStyle:{ color: 'red' },
+        pathOptions: {color: 'green'},
+    });
+
+   map2.pm.addControls({
+        position: 'topleft',
+        drawPolyline: false,
+        drawMarker: false,
+        drawCircleMarker: true,
+        drawRectangle: false,
+        drawPolygon: false,
+        drawCircle: false,
+        cutPolygon: false,
+        rotateMode: false,
+        editMode: false,
+        drawText: false
+    });
+
+       
+   map2.pm.setGlobalOptions({ 
+        snappable: true, 
+        snapangle: true,
+        snapAngleInterval: 90, 
+        templineStyle:{ color: 'red' },
+        hintlineStyle:{ color: 'red' },
+        hintpointStyle:{ color: 'red' },
+        pathOptions: {color: 'green'}
+    });
+
+   var map1_markerID = 0;
+   var map1_markerGroup = L.featureGroup()
+   map1.on('pm:create', (e) => {
+        map1_markerGroup.addLayer(e.layer);
+        map1_markerID += 1;
+
+        pixel_coords = map1.project(e.layer._latlng, PROPER_ZOOM)
+        e.layer.bindTooltip(`ID: ${map1_markerID}`, {
+            permanent: true
+        });
+   });
+
+   var map2_markerID = 0;
+   var map2_markerGroup = L.featureGroup()
+   map2.on('pm:create', (e) => {
+        map2_markerGroup.addLayer(e.layer);
+        map2_markerID += 1;
+        e.layer.bindTooltip(`ID: ${map2_markerID}`, {
+            permanent: true
+        });
+   });
+
+   map1.on('pm:remove', (e) => {
+        map1_markerGroup.removeLayer(e.layer);
+        map1_markerID -= 1;
+   });
+
+   map2.on('pm:remove', (e) => {
+        map2_markerGroup.removeLayer(e.layer);
+        map2_markerID -= 1;
+   });
+
+   function getGCPs() {
+        var images = [];
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", `${API_URL}getGcps/${IMAGE_NAME}`);
+        xhr.send(null);
+
+        xhr.onload = function() {
+            var geojson_pixel_gcp = JSON.parse(xhr.responseText).pixel_gcp;
+            var geojson_wgs_gcp = JSON.parse(xhr.responseText).wgs_gcp;
+            var gcps_pixel_markers = null
+
+            gcps_pixel_markers = L.geoJson(geojson_pixel_gcp, {
+                coordsToLatLng: function (coords) {
+                    new_coords = map1.unproject([coords[0],coords[1]], PROPER_ZOOM);
+                    return new L.LatLng(new_coords.lat, new_coords.lng);
+                },
+                onEachFeature: function (feature, layer) {
+                    layer.bindTooltip('Gcp_id: ' +  feature.properties.gcp_id + '<br>Date: ' + feature.properties.date + '<br>Time: ' + feature.properties.time) ;
+                    map1_markerGroup.addLayer(layer);
+                    map1_markerID += 1;
+                }
+            }).addTo(map1)
+
+            var gcps_wgs_markers = null
+            gcps_wgs_markers = L.geoJson(geojson_wgs_gcp, {            
+                onEachFeature: function (feature, layer) {
+                    layer.bindTooltip('Gcp_id: ' +  feature.properties.gcp_id + '<br>Date: ' + feature.properties.date + '<br>Time: ' + feature.properties.time) ;
+                    map2_markerGroup.addLayer(layer);
+                    map2_markerID += 1;
+                }
+            }).addTo(map2)
+
+            let arrayOfMarkersCoords = [];
+            map2_markerGroup.eachLayer(function(layer){
+                arrayOfMarkersCoords.push([ layer.feature['geometry']['coordinates'][1], layer.feature['geometry']['coordinates'][0]]);
+            });
+            map2.fitBounds(new L.LatLngBounds(arrayOfMarkersCoords));   
+        }
+    }
+
+   function validateMarkers() {
+        map1_nbMarkers = Object.keys(map1_markerGroup._layers).length
+        map2_nbMarkers = Object.keys(map2_markerGroup._layers).length
+        if (map1_nbMarkers == map2_nbMarkers) {
+            alert("Good!");
+            sendGCPs();
+        }
+        else
+            alert("Numbers of markers are different on 2 maps!");
+   }
+
+   function sendGCPs() {
+        georef_dict = {}
+
+        var pixel_pts = {}
+        map1_markerGroup.eachLayer(function(layer){
+            var mID = `${layer._tooltip._content}`.split('<br>')[0].split(' ')[1];
+            var px_c = map1.project(layer._latlng, PROPER_ZOOM);
+            pixel_pts[mID] = [px_c.x, px_c.y ];
+        });
+
+        var wgs_pts = {}
+        map2_markerGroup.eachLayer(function(layer){
+            var mID = `${layer._tooltip._content}`.split('<br>')[0].split(' ')[1];
+            wgs_pts[mID] = [layer._latlng.lat, layer._latlng.lng];
+        });
+
+        var today = new Date();
+        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+        georef_dict = {
+            'imagename': IMAGE_NAME,
+            'pixel': pixel_pts,
+            'wgs': wgs_pts,
+            'date': date,
+            'time': time
+        }
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", `${API_URL}send_georef/`);
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        xhr.send(JSON.stringify(georef_dict));
+        xhr.onload = function() {
+             window.location.reload()
+        }
+   }
+
+   function clearGCPs() {
+      let xhr = new XMLHttpRequest();
+        xhr.open("GET", `${API_URL}clearGCPs/${IMAGE_NAME}`);
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+       
+        xhr.send(null);
+        xhr.onload = function() {
+            console.log(`Delete ${xhr.response} GCPs.`)
+            window.location.reload()
+       }
+    }
+
+   function goToEditor() {
+    window.location.href = `${EDITOR_URL}?image=${IMAGE_NAME}`
+   }
+
+</script>
+
+</body>
+</html>

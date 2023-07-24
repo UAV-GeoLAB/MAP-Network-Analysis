@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Space Syntax</title>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="leaflet\leaflet.css" />
+    <link rel="stylesheet" href="geoman\leaflet-geoman.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="geoman\leaflet-geoman.min.js"></script>
+    <script src="http://mejackreed.github.io/Leaflet-IIIF/leaflet-iiif.js"></script>  
+    <script src="orthomode\pmOrtho.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    <script src="leaflet/choropleth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js" integrity="sha512-zInFF17qBFVvvvFpIfeBzo7Tj7+rQxLeTJDmbxjBz5/zIr89YVbTNelNhdTT+/DCrxoVzBeUPVFJsczKbB7sew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="getRequest.js"></script>
+    <script type="text/javascript" src="urls.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+</head>
+<body>
+    <header >
+        <div id="header_title" class="center">
+            Graph Analysis on Street Network    
+        </div>
+        <div class="popup" onclick="myFunction()">
+            <span class="popuptext" id="myPopup">Changes Saved!</span>
+        </div>      
+         <img id='loadingImg'  class="center-loading" style='display:none;' src='ui/loading2.gif'/>
+    </header>
+
+<div id="map" >
+    <script>
+        function myFunction() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+            console.log("POPUP")
+        }
+
+        var inputFeatures = L.featureGroup(); // Features on maps
+        document.addEventListener("DOMContentLoaded", function() {
+            var IMAGE_NAME = window.location.search.replace('?image=', '')
+            var url = `${IIIF_URL}${IMAGE_NAME}/info.json`
+            var urlregex = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/;
+
+            if (urlregex.test(url)) {
+                var iiif_url = url;
+            }
+            
+            var map = L.map('map', {
+                center: [180,180],
+                crs: L.CRS.Simple,
+                zoom: 0,
+                maxZoom: 10,
+                // minZoom:1
+            });
+
+            var iiifMap = L.tileLayer.iiif(iiif_url, {
+                setMaxBounds: true,
+                fitBounds: false
+            }).addTo(map);
+
+            PROPER_ZOOM = doAjaxThings(IMAGE_NAME, url, map).then(function(zoom) {
+                var performButton = document.getElementById("perform_btn");
+                performButton.addEventListener("click", function() {
+                    doAnalysis(IMAGE_NAME);
+                });
+
+                var performSSButton = document.getElementById("perform_ss_btn");
+                performSSButton.addEventListener("click", function() {
+
+                    console.log("Perform clicked!");
+                    doSSAnalysis(IMAGE_NAME);
+
+                    console.log("Perform finished!");
+                      
+                });
+                var clearButton = document.getElementById("clear_btn");
+                clearButton.addEventListener("click", function() {
+                    console.log("Clears clicked!");
+                    clearVector(IMAGE_NAME);
+                });
+
+                var georeferenceButton = document.getElementById("georef_btn");
+                georeferenceButton.addEventListener("click", function() {
+                    console.log("Perform clicked!");
+                    window.location.href = `${GEOREFERENCE_URL}?image=${IMAGE_NAME}`
+                });
+
+                 // Map events:
+                map.on('pm:create', (e) => {
+                    added_layer = e.layer;
+                    inputFeatures.addLayer(added_layer);
+                    geojson_to_save = getFeaturesInPixels(map, zoom);
+                    saveVector(geojson_to_save, IMAGE_NAME, map, zoom);
+                });
+              
+                map.on('pm:remove', (e) => {
+                    inputFeatures.removeLayer(e.layer);
+                    geojson_to_save = getFeaturesInPixels(map, zoom);
+                    saveVector(geojson_to_save, IMAGE_NAME, map, zoom);
+               });
+
+                inputFeatures.eachLayer(function(layer){
+                    layer.on('pm:edit', (e) => {
+                      geojson_to_save = getFeaturesInPixels(map, zoom);
+                      saveVector(geojson_to_save, IMAGE_NAME, map, zoom);
+                    });
+                });
+            });
+            
+            // Adding controls
+            map.pm.addControls({
+                position: 'topleft',
+                drawPolyline: true,
+                drawMarker: false,
+                drawCircleMarker: false,
+                drawRectangle: false,
+                drawPolygon: false,
+                drawCircle: false,
+                drawText: false,
+                cutPolygon: false
+            });
+             map.pm.addControls({
+                position: 'topleft',
+                drawPolyline: true,
+                drawMarker: false,
+                drawCircleMarker: false,
+                drawRectangle: false,
+                drawPolygon: false,
+                drawCircle: false,
+                drawText: false,
+                cutPolygon: false
+            });
+            // Options for map       
+            map.pm.setGlobalOptions({ 
+                snappable: true, 
+                snapangle: true,
+                snapAngleInterval: 90, 
+                templineStyle:{ color: 'blue' },
+                hintlineStyle:{ color: 'red' },
+                pathOptions: {color: 'blue'},
+                editable: true
+                // allowSelfIntersection: false
+            });
+        });
+
+
+        async function doAjaxThings(imagename, info_url, map_object) {
+            let iiif_info = await makeRequest("GET", info_url);
+            var info_json = JSON.parse(iiif_info);
+
+            var img_width = info_json.width
+            var img_height = info_json.height
+            var proper_zoom = getProperZoom(img_width, img_height, map_object);
+            
+            let latest_vector = await makeRequest("GET", `${API_URL}getLatestVector/${imagename}`);
+            addLatestVectorToMap(latest_vector, map_object, proper_zoom);
+            
+            let numGcps = await makeRequest("GET", `${API_URL}getNumGcps/${imagename}`);
+            updateGcpsLabel(numGcps);
+
+            return proper_zoom;
+        }
+
+        async function doAnalysis(imagename){
+            document.getElementById('loadingImg').style.display='block'; 
+            let perform = await makeRequest("GET", `${API_URL}perform_analysis/${imagename}`);
+            window.location.href = `${VIEWER_URL}?image=${imagename}`
+        }
+
+        async function doSSAnalysis(imagename){
+            document.getElementById('loadingImg').style.display='block'; 
+            let perform = await makeRequest("GET", `${API_URL}perform_ss_analysis/${imagename}`);
+            window.location.href = `${VIEWER_SS_URL}?image=${imagename}`
+        }
+
+        async function clearVector(imagename){
+            let perform = await makeRequest("GET", `${API_URL}clear_vector/${imagename}`);
+            window.location.reload();
+        }
+
+        function updateGcpsLabel(n_gcps) {
+            var nGcps = Number(n_gcps)
+            var counter = document.getElementById("gcpsCounter");
+            var item = document.getElementById("item-gcpsCounter");
+            var perform_btn = document.getElementById("perform_btn");
+            counter.innerHTML = `GCPs: ${nGcps}`;
+            counter.style.fontSize = 'medium';
+              
+            if (nGcps < 1) {
+                item.style.backgroundColor = 'red';
+                perform_btn.style.display='none';
+            }
+                
+            else if (nGcps < 4) {
+                item.style.backgroundColor = 'blue';
+                perform_btn.style.display='block';
+            }
+            else
+                item.style.backgroundColor = 'green';
+        }
+            
+        function addLatestVectorToMap(responseText, map_object, zoom) {
+            inputFeatures.eachLayer(function(layer){
+                inputFeatures.removeLayer(layer);
+                layer.remove();     
+            });
+                    
+            var geojson_res = JSON.parse(responseText);
+            var geojson_layer = L.geoJson(geojson_res,{
+                coordsToLatLng: function (coords) {
+                    new_coords = map_object.unproject([coords[0],coords[1]], zoom);
+                    return new L.LatLng(new_coords.lat, new_coords.lng);
+                },
+                style: {color: "green"}
+            }).addTo(map_object)
+
+            geojson_layer.eachLayer(function (layer) {
+              inputFeatures.addLayer(layer);
+            });     
+        }
+               
+        function download(filename, text) {
+              var element = document.createElement('a');
+              element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(text)));
+              element.setAttribute('download', filename);
+
+              element.style.display = 'none';
+              document.body.appendChild(element);
+
+              element.click();
+              document.body.removeChild(element);
+        }
+           
+        function getValues(geojsonLayer) {
+            var i = 0;
+            var values = [];
+            geojsonLayer.eachLayer(function(layer) {
+                values.push(layer.feature.properties.betweenn_1)
+            });
+
+            return values;
+        }
+
+         function getColor(d) {
+            var mapScale = chroma.scale(['yellow', 'navy']).mode('lch').domain([0,0.4], 5, 'q');
+            return mapScale(d)
+        }
+
+        colors = chroma.scale(['#ff0000','#2A4858']).mode('lch').colors(6)
+        function style(feature) {
+            
+            return {
+                weight: 7,
+                opacity: 1,
+                color: getColor(feature.properties.betweenn_1),
+                dashArray: '1',
+                fillOpacity: 1,
+                // fillColor: getColor(feature.properties.betweenn_1)
+            };
+        }
+
+        var legend = L.control({position: 'bottomright'});
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [0, 0.1, 0.2, 0.3, 0.4],
+                labels = ['Value'];
+                div.innerHTML += '<ul>' + labels.join('') + '</ul>'
+
+            // loop through our density intervals and generate a label with a colored square for each interval
+            for (var i = 0; i < grades.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColor(grades[i]) + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+            }
+
+            return div;
+         };
+
+        legend.addTo(map);
+    </script>
+</div>
+
+
+<div class='grid-container'>
+    <div class="grid-item" >
+        <button type="button" id="georef_btn"  onclick="goToGeoreferenceEditor()" style="height: 100%; width: 100%; text-align: center;">Georeference a Map</button>
+    </div>
+    <div class="grid-item" id='item-gcpsCounter' >
+        <p id='gcpsCounter' style=" font-size:15px; text-align: center;"></p>
+    </div>
+    <div class="grid-item" >
+        <button type="button" id="perform_btn"   style="height: 100%; width: 100%; text-align: center;">NetworkX Analysis</button > 
+    </div>
+    <div class="grid-item" >
+        <button type="button" id="perform_ss_btn"   style="height: 100%; width: 100%; text-align: center;">SpaceSyntax Analysis</button > 
+    </div>
+     <div class="grid-item" >
+        <button type="button" id="clear_btn"   style="height: 100%; width: 100%; text-align: center;">Clear vectorisation</button > 
+    </div> 
+</div>
+
+</body>
+</html>

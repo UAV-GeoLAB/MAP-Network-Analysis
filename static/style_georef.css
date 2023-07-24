@@ -1,0 +1,135 @@
+/* Fonts definition */
+@font-face {
+    font-family: 'Roboto-Light';
+    src: url('fonts/Roboto/Roboto-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+/*--------------------------------------------------------*/
+
+body {
+    padding: 0;
+    margin: 0;
+} 
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#map1 {
+    padding-top: 5%;  
+    height: 77%;
+    width: 49%;
+    display: inline-block;
+}
+
+#map2 {
+    padding-top: 5%;
+    height: 77%;
+    width: 49%;
+    display: inline-block;
+}
+
+#georef_btn {
+     font-family: 'Roboto-Medium';
+     font-size: 20px;
+}
+
+#perform_btn {
+     font-family: 'Roboto-Medium';
+     font-size: 20px;
+}
+
+#header_title {
+  margin-top: 10px;
+  width: 30%;
+  font-size: 200%;
+  text-align: center;
+  font-family: 'Roboto-Bold'
+}
+
+body {
+    color: white;
+    background: #8a8781;
+}
+
+form * {
+  display: block;
+  margin: 10px;
+}
+
+.info {
+    padding: 6px 8px;
+    font-size: 14px;
+    font-family: 'Roboto-Light'
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.legend {
+    line-height: 20px;
+    color: #555;
+}
+.legend i {
+    width: 40px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+ul {
+  font-family: 'Roboto-Bold';
+}
+
+.center{
+  margin-top: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  min-width: 200px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    width: 30%;
+}
+
+.grid-item {
+  background-color: crimson;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  font-size: 15px;
+  font-family: 'Roboto-Bold';
+  text-align: center;
+}
