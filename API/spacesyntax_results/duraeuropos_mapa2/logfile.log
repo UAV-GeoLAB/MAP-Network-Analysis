@@ -1,0 +1,246 @@
+2023-01-07 11:14:41,908 : INFO : space-syntax : Starting operation duraeuropos_mapa2
+2023-01-07 11:14:41,908 : INFO : space-syntax : Downloading osm files...
+2023-01-07 11:14:41,908 : INFO : space-syntax : Downloading map for: duraeuropos_mapa2.osm ...
+2023-01-07 11:14:42,169 : INFO : space-syntax : Downloading osm files took 0:00:00.262063
+2023-01-07 11:14:42,169 : INFO : space-syntax : Converting /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.shp to /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf
+2023-01-07 11:14:42,398 : INFO : space-syntax : CRS:  epsg:32636
+2023-01-07 11:14:42,432 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2023-01-07 11:14:42,442 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2023-01-07 11:14:42,443 : INFO : space-syntax : ['depthmapXcli -v ' exited with 0] and took 0:00:00.010930¬
+2023-01-07 11:14:42,443 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf' -o '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph'  because: Transform dxf to shape file
+2023-01-07 11:14:42,459 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf' -o '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph' " exited with 0] and took 0:00:00.015605¬
+2023-01-07 11:14:42,459 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2023-01-07 11:14:42,467 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2023-01-07 11:14:42,467 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2023-01-07 11:14:42,473 : INFO : space-syntax : Converting to axial map -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph ok
+2023-01-07 11:14:42,476 : INFO : space-syntax : Converting to segment map -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph ok
+2023-01-07 11:14:42,481 : INFO : space-syntax : Converting to axial map ->  ok
+2023-01-07 11:14:42,482 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2023-01-07 11:14:42,483 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.023611¬
+2023-01-07 11:14:42,483 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2023-01-07 11:14:42,490 : INFO : space-syntax : Converting to segment map ->  ok
+2023-01-07 11:14:42,490 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2023-01-07 11:14:42,490 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.023331¬
+2023-01-07 11:14:42,490 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2023-01-07 11:14:42,496 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph ok
+2023-01-07 11:14:42,503 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph ok
+2023-01-07 11:14:42,556 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2023-01-07 11:14:42,557 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2023-01-07 11:14:42,558 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.075197¬
+2023-01-07 11:14:42,559 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2023-01-07 11:14:42,573 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph ok
+2023-01-07 11:14:42,581 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.022904¬
+2023-01-07 11:14:42,816 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2023-01-07 11:14:42,816 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2023-01-07 11:14:42,816 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.325995¬
+2023-01-07 11:14:42,816 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2023-01-07 11:14:42,832 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph ok
+2023-01-07 11:14:42,844 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.segment.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.027710¬
+2023-01-07 11:14:43,091 : INFO : space-syntax : Exported axial files: 
+2023-01-07 11:14:43,091 : INFO : space-syntax : Exported segment files: 
+2023-01-07 11:14:43,091 : INFO : space-syntax : Operation duraeuropos_mapa2 took 0:00:01.183949
+2023-01-07 11:15:57,438 : INFO : space-syntax : Starting operation duraeuropos_mapa2
+2023-01-07 11:15:57,439 : INFO : space-syntax : Downloading osm files...
+2023-01-07 11:15:57,439 : INFO : space-syntax : Downloading map for: duraeuropos_mapa2.osm ...
+2023-01-07 11:15:57,692 : INFO : space-syntax : Downloading osm files took 0:00:00.254462
+2023-01-07 11:15:57,692 : INFO : space-syntax : Converting /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.shp to /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf
+2023-01-07 11:15:57,903 : INFO : space-syntax : CRS:  epsg:32636
+2023-01-07 11:15:57,935 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2023-01-07 11:15:57,945 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2023-01-07 11:15:57,946 : INFO : space-syntax : ['depthmapXcli -v ' exited with 0] and took 0:00:00.010984¬
+2023-01-07 11:15:57,946 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf' -o '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph'  because: Transform dxf to shape file
+2023-01-07 11:15:57,961 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf' -o '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph' " exited with None] and took 0:00:00.014984¬
+2023-01-07 11:15:57,962 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2023-01-07 11:15:57,968 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2023-01-07 11:15:57,968 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2023-01-07 11:15:57,974 : INFO : space-syntax : Converting to axial map -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph ok
+2023-01-07 11:15:57,977 : INFO : space-syntax : Converting to segment map -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph ok
+2023-01-07 11:15:57,983 : INFO : space-syntax : Converting to axial map ->  ok
+2023-01-07 11:15:57,983 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2023-01-07 11:15:57,984 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.022390¬
+2023-01-07 11:15:57,985 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2023-01-07 11:15:57,990 : INFO : space-syntax : Converting to segment map ->  ok
+2023-01-07 11:15:57,990 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2023-01-07 11:15:57,991 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.022393¬
+2023-01-07 11:15:57,991 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2023-01-07 11:15:57,997 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph ok
+2023-01-07 11:15:58,003 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph ok
+2023-01-07 11:15:58,058 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2023-01-07 11:15:58,059 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2023-01-07 11:15:58,060 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.075707¬
+2023-01-07 11:15:58,060 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2023-01-07 11:15:58,075 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph ok
+2023-01-07 11:15:58,084 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.023277¬
+2023-01-07 11:15:58,282 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2023-01-07 11:15:58,282 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2023-01-07 11:15:58,282 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.291692¬
+2023-01-07 11:15:58,283 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2023-01-07 11:15:58,298 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph ok
+2023-01-07 11:15:58,310 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.segment.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.027684¬
+2023-01-07 11:15:58,540 : INFO : space-syntax : Exported axial files: 
+2023-01-07 11:15:58,540 : INFO : space-syntax : Exported segment files: 
+2023-01-07 11:15:58,540 : INFO : space-syntax : Operation duraeuropos_mapa2 took 0:00:01.103278
+2023-01-07 11:19:20,862 : INFO : space-syntax : Starting operation duraeuropos_mapa2
+2023-01-07 11:19:20,862 : INFO : space-syntax : Downloading osm files...
+2023-01-07 11:19:20,863 : INFO : space-syntax : Downloading map for: duraeuropos_mapa2.osm ...
+2023-01-07 11:19:21,124 : INFO : space-syntax : Downloading osm files took 0:00:00.263498
+2023-01-07 11:19:21,125 : INFO : space-syntax : Converting /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.shp to /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf
+2023-01-07 11:19:21,345 : INFO : space-syntax : CRS:  epsg:32636
+2023-01-07 11:19:21,377 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2023-01-07 11:19:21,388 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2023-01-07 11:19:21,389 : INFO : space-syntax : ['depthmapXcli -v ' exited with 0] and took 0:00:00.011329¬
+2023-01-07 11:19:21,389 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf' -o '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph'  because: Transform dxf to shape file
+2023-01-07 11:19:21,403 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf' -o '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph' " exited with None] and took 0:00:00.014518¬
+2023-01-07 11:19:21,404 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2023-01-07 11:19:21,410 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2023-01-07 11:19:21,410 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2023-01-07 11:19:21,416 : INFO : space-syntax : Converting to axial map -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph ok
+2023-01-07 11:19:21,419 : INFO : space-syntax : Converting to segment map -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph ok
+2023-01-07 11:19:21,425 : INFO : space-syntax : Converting to axial map ->  ok
+2023-01-07 11:19:21,426 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2023-01-07 11:19:21,427 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.022791¬
+2023-01-07 11:19:21,427 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2023-01-07 11:19:21,433 : INFO : space-syntax : Converting to segment map ->  ok
+2023-01-07 11:19:21,433 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2023-01-07 11:19:21,434 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.023485¬
+2023-01-07 11:19:21,434 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2023-01-07 11:19:21,439 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph ok
+2023-01-07 11:19:21,446 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph ok
+2023-01-07 11:19:21,500 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2023-01-07 11:19:21,501 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2023-01-07 11:19:21,502 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.074802¬
+2023-01-07 11:19:21,502 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2023-01-07 11:19:21,516 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph ok
+2023-01-07 11:19:21,525 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.023402¬
+2023-01-07 11:19:21,724 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2023-01-07 11:19:21,724 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2023-01-07 11:19:21,724 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.290312¬
+2023-01-07 11:19:21,724 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2023-01-07 11:19:21,740 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph ok
+2023-01-07 11:19:21,751 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.segment.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.026315¬
+2023-01-07 11:19:21,984 : INFO : space-syntax : Exported axial files: 
+2023-01-07 11:19:21,984 : INFO : space-syntax : Exported segment files: 
+2023-01-07 11:19:21,984 : INFO : space-syntax : Operation duraeuropos_mapa2 took 0:00:01.123178
+2023-01-12 12:10:53,920 : INFO : space-syntax : Starting operation duraeuropos_mapa2
+2023-01-12 12:10:53,920 : INFO : space-syntax : Downloading osm files...
+2023-01-12 12:10:53,920 : INFO : space-syntax : Downloading map for: duraeuropos_mapa2.osm ...
+2023-01-12 12:10:54,194 : INFO : space-syntax : Downloading osm files took 0:00:00.274765
+2023-01-12 12:10:54,194 : INFO : space-syntax : Converting /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.shp to /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf
+2023-01-12 12:10:54,421 : INFO : space-syntax : CRS:  epsg:32637
+2023-01-12 12:10:54,455 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2023-01-12 12:10:54,465 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2023-01-12 12:10:54,466 : INFO : space-syntax : ['depthmapXcli -v ' exited with 0] and took 0:00:00.011266¬
+2023-01-12 12:10:54,466 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf' -o '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph'  because: Transform dxf to shape file
+2023-01-12 12:10:54,482 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf' -o '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph' " exited with 0] and took 0:00:00.015695¬
+2023-01-12 12:10:54,482 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2023-01-12 12:10:54,488 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2023-01-12 12:10:54,489 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2023-01-12 12:10:54,495 : INFO : space-syntax : Converting to axial map -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph ok
+2023-01-12 12:10:54,497 : INFO : space-syntax : Converting to segment map -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph ok
+2023-01-12 12:10:54,504 : INFO : space-syntax : Converting to axial map ->  ok
+2023-01-12 12:10:54,505 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2023-01-12 12:10:54,505 : INFO : space-syntax : Converting to segment map ->  ok
+2023-01-12 12:10:54,506 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.023832¬
+2023-01-12 12:10:54,507 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2023-01-12 12:10:54,513 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2023-01-12 12:10:54,513 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.024662¬
+2023-01-12 12:10:54,514 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2023-01-12 12:10:54,521 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph ok
+2023-01-12 12:10:54,527 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph ok
+2023-01-12 12:10:54,581 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2023-01-12 12:10:54,582 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2023-01-12 12:10:54,583 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.076935¬
+2023-01-12 12:10:54,584 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2023-01-12 12:10:54,597 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph ok
+2023-01-12 12:10:54,606 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.022740¬
+2023-01-12 12:10:54,804 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2023-01-12 12:10:54,804 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2023-01-12 12:10:54,804 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.290752¬
+2023-01-12 12:10:54,804 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2023-01-12 12:10:54,819 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph ok
+2023-01-12 12:10:54,830 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.segment.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.025500¬
+2023-01-12 12:10:55,054 : INFO : space-syntax : Exported axial files: 
+2023-01-12 12:10:55,054 : INFO : space-syntax : Exported segment files: 
+2023-01-12 12:10:55,055 : INFO : space-syntax : Operation duraeuropos_mapa2 took 0:00:01.135770
+2023-01-12 13:38:02,336 : INFO : space-syntax : Starting operation duraeuropos_mapa2
+2023-01-12 13:38:02,337 : INFO : space-syntax : Downloading osm files...
+2023-01-12 13:38:02,337 : INFO : space-syntax : Downloading map for: duraeuropos_mapa2.osm ...
+2023-01-12 13:38:02,614 : INFO : space-syntax : Downloading osm files took 0:00:00.279309
+2023-01-12 13:38:02,615 : INFO : space-syntax : Converting /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.shp to /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf
+2023-01-12 13:38:02,840 : INFO : space-syntax : CRS:  epsg:32637
+2023-01-12 13:38:02,873 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2023-01-12 13:38:02,885 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2023-01-12 13:38:02,886 : INFO : space-syntax : ['depthmapXcli -v ' exited with 0] and took 0:00:00.012362¬
+2023-01-12 13:38:02,886 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf' -o '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph'  because: Transform dxf to shape file
+2023-01-12 13:38:02,902 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf' -o '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph' " exited with None] and took 0:00:00.015696¬
+2023-01-12 13:38:02,902 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2023-01-12 13:38:02,908 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2023-01-12 13:38:02,908 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2023-01-12 13:38:02,915 : INFO : space-syntax : Converting to axial map -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph ok
+2023-01-12 13:38:02,918 : INFO : space-syntax : Converting to segment map -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph ok
+2023-01-12 13:38:02,923 : INFO : space-syntax : Converting to axial map ->  ok
+2023-01-12 13:38:02,924 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2023-01-12 13:38:02,925 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.022800¬
+2023-01-12 13:38:02,925 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2023-01-12 13:38:02,931 : INFO : space-syntax : Converting to segment map ->  ok
+2023-01-12 13:38:02,932 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2023-01-12 13:38:02,932 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.023617¬
+2023-01-12 13:38:02,932 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2023-01-12 13:38:02,938 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph ok
+2023-01-12 13:38:02,944 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph ok
+2023-01-12 13:38:02,998 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2023-01-12 13:38:02,999 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2023-01-12 13:38:03,000 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.075052¬
+2023-01-12 13:38:03,000 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2023-01-12 13:38:03,014 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph ok
+2023-01-12 13:38:03,025 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.024217¬
+2023-01-12 13:38:03,223 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2023-01-12 13:38:03,223 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2023-01-12 13:38:03,223 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.291075¬
+2023-01-12 13:38:03,223 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2023-01-12 13:38:03,239 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph ok
+2023-01-12 13:38:03,251 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.segment.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.027748¬
+2023-01-12 13:38:03,479 : INFO : space-syntax : Exported axial files: 
+2023-01-12 13:38:03,479 : INFO : space-syntax : Exported segment files: 
+2023-01-12 13:38:03,479 : INFO : space-syntax : Operation duraeuropos_mapa2 took 0:00:01.143929
+2023-01-12 14:26:04,406 : INFO : space-syntax : Starting operation duraeuropos_mapa2
+2023-01-12 14:26:04,406 : INFO : space-syntax : Downloading osm files...
+2023-01-12 14:26:04,406 : INFO : space-syntax : Downloading map for: duraeuropos_mapa2.osm ...
+2023-01-12 14:26:04,692 : INFO : space-syntax : Downloading osm files took 0:00:00.287667
+2023-01-12 14:26:04,692 : INFO : space-syntax : Converting /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.shp to /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf
+2023-01-12 14:26:04,918 : INFO : space-syntax : CRS:  epsg:32637
+2023-01-12 14:26:04,952 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2023-01-12 14:26:04,964 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2023-01-12 14:26:04,964 : INFO : space-syntax : ['depthmapXcli -v ' exited with 0] and took 0:00:00.012273¬
+2023-01-12 14:26:04,965 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf' -o '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph'  because: Transform dxf to shape file
+2023-01-12 14:26:04,982 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.dxf' -o '/results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph' " exited with 0] and took 0:00:00.017410¬
+2023-01-12 14:26:04,983 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2023-01-12 14:26:04,989 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2023-01-12 14:26:04,989 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2023-01-12 14:26:04,996 : INFO : space-syntax : Converting to axial map -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph ok
+2023-01-12 14:26:04,999 : INFO : space-syntax : Converting to segment map -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph ok
+2023-01-12 14:26:05,004 : INFO : space-syntax : Converting to axial map ->  ok
+2023-01-12 14:26:05,005 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2023-01-12 14:26:05,006 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.023767¬
+2023-01-12 14:26:05,006 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2023-01-12 14:26:05,012 : INFO : space-syntax : Converting to segment map ->  ok
+2023-01-12 14:26:05,013 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2023-01-12 14:26:05,013 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.023794¬
+2023-01-12 14:26:05,013 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2023-01-12 14:26:05,019 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph ok
+2023-01-12 14:26:05,025 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph ok
+2023-01-12 14:26:05,079 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2023-01-12 14:26:05,080 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2023-01-12 14:26:05,081 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.074675¬
+2023-01-12 14:26:05,081 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2023-01-12 14:26:05,095 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph ok
+2023-01-12 14:26:05,104 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-axial-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.022335¬
+2023-01-12 14:26:05,304 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2023-01-12 14:26:05,304 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2023-01-12 14:26:05,304 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-map.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.291129¬
+2023-01-12 14:26:05,304 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2023-01-12 14:26:05,320 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph ok
+2023-01-12 14:26:05,332 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/duraeuropos_mapa2/duraeuropos_mapa2/osm-segment-analysis.graph -o /results/duraeuropos_mapa2/duraeuropos_mapa2/osm.segment.mif -em shapegraph-map-mif' exited with None] and took 0:00:00.027980¬
+2023-01-12 14:26:05,560 : INFO : space-syntax : Exported axial files: 
+2023-01-12 14:26:05,561 : INFO : space-syntax : Exported segment files: 
+2023-01-12 14:26:05,561 : INFO : space-syntax : Operation duraeuropos_mapa2 took 0:00:01.156712

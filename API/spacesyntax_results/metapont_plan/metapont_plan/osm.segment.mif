@@ -1,0 +1,37 @@
+Version 300
+Charset "WindowsLatin1"
+Delimiter ","
+Index 1
+CoordSys NonEarth Units "m" Bounds ( 21.187271,  51.972301) ( 21.203016,  51.978805)
+Columns 17
+  Depthmap_Ref Integer
+  Angular_Connectivity Float
+  Axial_Line_Ref Float
+  Connectivity Float
+  Segment_Length Float
+  T1024_Choice Float
+  T1024_Choice_R1000_metric Float
+  T1024_Choice_R300_metric Float
+  T1024_Integration Float
+  T1024_Integration_R1000_metric Float
+  T1024_Integration_R300_metric Float
+  T1024_Node_Count Float
+  T1024_Node_Count_R1000_metric Float
+  T1024_Node_Count_R300_metric Float
+  T1024_Total_Depth Float
+  T1024_Total_Depth_R1000_metric Float
+  T1024_Total_Depth_R300_metric Float
+Data
+
+LINE 21.202051637 51.974506425 21.203016317 51.97875948
+    PEN (1,2,0)
+LINE 21.198796099 51.974414923 21.202051637 51.974506425
+    PEN (1,2,0)
+LINE 21.198796099 51.974414923 21.200003502 51.978805425
+    PEN (1,2,0)
+LINE 21.189024783 51.978525878 21.200003502 51.978805425
+    PEN (1,2,0)
+LINE 21.1878639 51.974291498 21.189024783 51.978525878
+    PEN (1,2,0)
+LINE 21.187270754 51.972300946 21.1878639 51.974291498
+    PEN (1,2,0)

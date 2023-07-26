@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="ogr2osm 1.1.2" upload="false">
+<node visible="true" id="-1" lat="51.97875948" lon="21.203016317"/>
+<node visible="true" id="-2" lat="51.974506425" lon="21.202051637"/>
+<node visible="true" id="-3" lat="51.974414923" lon="21.198796099"/>
+<node visible="true" id="-4" lat="51.978805425" lon="21.200003502"/>
+<node visible="true" id="-5" lat="51.978525878" lon="21.189024783"/>
+<node visible="true" id="-6" lat="51.974291498" lon="21.1878639"/>
+<node visible="true" id="-7" lat="51.972300946" lon="21.187270754"/>
+<way visible="true" id="-8"><nd ref="-1"/><nd ref="-2"/><nd ref="-3"/><nd ref="-4"/><nd ref="-5"/><nd ref="-6"/><nd ref="-7"/><tag k="FID" v="0"/></way>
+</osm>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="ogr2osm 1.1.2" upload="false">
+<node visible="true" id="-1" lat="52.227675371" lon="21.010973935"/>
+<node visible="true" id="-2" lat="52.226126401" lon="21.011223604"/>
+<node visible="true" id="-3" lat="52.226231283" lon="21.014707428"/>
+<node visible="true" id="-4" lat="52.224435693" lon="21.014933341"/>
+<node visible="true" id="-5" lat="52.224286498" lon="21.011434374"/>
+<node visible="true" id="-6" lat="52.223822511" lon="21.011502291"/>
+<node visible="true" id="-7" lat="52.223690822" lon="21.010104257"/>
+<node visible="true" id="-8" lat="52.223833143" lon="21.009822935"/>
+<node visible="true" id="-9" lat="52.223727245" lon="21.009103397"/>
+<node visible="true" id="-10" lat="52.22631133" lon="21.008785747"/>
+<node visible="true" id="-11" lat="52.227535299" lon="21.008540205"/>
+<node visible="true" id="-13" lat="52.228572018" lon="21.008205511"/>
+<node visible="true" id="-14" lat="52.227505568" lon="21.007003249"/>
+<node visible="true" id="-15" lat="52.226504521" lon="21.007028205"/>
+<node visible="true" id="-16" lat="52.226175072" lon="21.007556013"/>
+<node visible="true" id="-19" lat="52.226268552" lon="21.015493324"/>
+<node visible="true" id="-20" lat="52.226322107" lon="21.016929086"/>
+<node visible="true" id="-21" lat="52.227671238" lon="21.01676927"/>
+<node visible="true" id="-22" lat="52.227693573" lon="21.017309915"/>
+<node visible="true" id="-23" lat="52.2264917" lon="21.017385337"/>
+<node visible="true" id="-24" lat="52.224653771" lon="21.017674879"/>
+<node visible="true" id="-25" lat="52.224532439" lon="21.017391314"/>
+<node visible="true" id="-26" lat="52.224638472" lon="21.017064399"/>
+<node visible="true" id="-27" lat="52.224587123" lon="21.01711909"/>
+<way visible="true" id="-12"><nd ref="-1"/><nd ref="-2"/><nd ref="-3"/><nd ref="-4"/><nd ref="-5"/><nd ref="-6"/><nd ref="-7"/><nd ref="-8"/><nd ref="-9"/><nd ref="-10"/><nd ref="-11"/><tag k="FID" v="0"/></way>
+<way visible="true" id="-17"><nd ref="-13"/><nd ref="-11"/><nd ref="-14"/><nd ref="-15"/><nd ref="-16"/><nd ref="-2"/><tag k="FID" v="1"/></way>
+<way visible="true" id="-18"><nd ref="-5"/><nd ref="-2"/><tag k="FID" v="2"/></way>
+<way visible="true" id="-28"><nd ref="-3"/><nd ref="-19"/><nd ref="-20"/><nd ref="-21"/><nd ref="-22"/><nd ref="-23"/><nd ref="-24"/><nd ref="-25"/><nd ref="-26"/><nd ref="-27"/><tag k="FID" v="3"/></way>
+<way visible="true" id="-29"><nd ref="-26"/><nd ref="-20"/><tag k="FID" v="4"/></way>
+</osm>

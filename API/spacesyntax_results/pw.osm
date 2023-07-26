@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="ogr2osm 1.1.2" upload="false">
+<node visible="true" id="-1" lat="52.289438111" lon="20.887117837"/>
+<node visible="true" id="-2" lat="52.184593867" lon="20.8869172"/>
+<node visible="true" id="-3" lat="52.185103895" lon="21.122340148"/>
+<node visible="true" id="-4" lat="52.277730121" lon="21.125071433"/>
+<node visible="true" id="-5" lat="52.262455285" lon="21.338925188"/>
+<node visible="true" id="-6" lat="52.222082886" lon="21.423118148"/>
+<node visible="true" id="-7" lat="52.014779633" lon="21.799185461"/>
+<node visible="true" id="-8" lat="51.988947943" lon="21.780427758"/>
+<node visible="true" id="-9" lat="52.024720119" lon="20.871376466"/>
+<node visible="true" id="-10" lat="52.161505063" lon="20.889069481"/>
+<node visible="true" id="-12" lat="52.128511028" lon="21.592866173"/>
+<node visible="true" id="-13" lat="52.081620203" lon="21.449143089"/>
+<node visible="true" id="-14" lat="52.185494413" lon="21.245721828"/>
+<way visible="true" id="-11"><nd ref="-1"/><nd ref="-2"/><nd ref="-3"/><nd ref="-4"/><nd ref="-5"/><nd ref="-6"/><nd ref="-7"/><nd ref="-8"/><nd ref="-9"/><nd ref="-10"/><tag k="FID" v="0"/></way>
+<way visible="true" id="-15"><nd ref="-12"/><nd ref="-13"/><nd ref="-14"/><nd ref="-3"/><tag k="FID" v="1"/></way>
+</osm>

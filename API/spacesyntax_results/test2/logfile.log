@@ -1,0 +1,82 @@
+2023-01-07 10:45:40,026 : INFO : space-syntax : Starting operation test2
+2023-01-07 10:45:40,027 : INFO : space-syntax : Downloading osm files...
+2023-01-07 10:45:40,027 : INFO : space-syntax : Downloading map for: test2.osm ...
+2023-01-07 10:45:40,203 : INFO : space-syntax : Downloading osm files took 0:00:00.177110
+2023-01-07 10:45:40,203 : INFO : space-syntax : Converting /results/test2/test2/osm.shp to /results/test2/test2/osm.dxf
+2023-01-07 10:45:40,371 : INFO : space-syntax : CRS:  epsg:32634
+2023-01-07 10:45:40,385 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2023-01-07 10:45:40,393 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2023-01-07 10:45:40,393 : INFO : space-syntax : ['depthmapXcli -v ' exited with 0] and took 0:00:00.008471¬
+2023-01-07 10:45:40,393 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/test2/test2/osm.dxf' -o '/results/test2/test2/osm.graph'  because: Transform dxf to shape file
+2023-01-07 10:45:40,402 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/test2/test2/osm.dxf' -o '/results/test2/test2/osm.graph' " exited with 0] and took 0:00:00.008797¬
+2023-01-07 10:45:40,403 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/test2/test2/osm.graph -o /results/test2/test2/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2023-01-07 10:45:40,407 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2023-01-07 10:45:40,407 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/test2/test2/osm.graph -o /results/test2/test2/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2023-01-07 10:45:40,412 : INFO : space-syntax : Converting to axial map -> Loading graph /results/test2/test2/osm.graph ok
+2023-01-07 10:45:40,413 : INFO : space-syntax : Converting to axial map ->  ok
+2023-01-07 10:45:40,413 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2023-01-07 10:45:40,413 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/test2/test2/osm.graph -o /results/test2/test2/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.010301¬
+2023-01-07 10:45:40,413 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/test2/test2/osm-axial-map.graph -o /results/test2/test2/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2023-01-07 10:45:40,418 : INFO : space-syntax : Converting to segment map -> Loading graph /results/test2/test2/osm.graph ok
+2023-01-07 10:45:40,418 : INFO : space-syntax : Converting to segment map ->  ok
+2023-01-07 10:45:40,418 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2023-01-07 10:45:40,418 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/test2/test2/osm.graph -o /results/test2/test2/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.010940¬
+2023-01-07 10:45:40,418 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/test2/test2/osm-segment-map.graph -o /results/test2/test2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2023-01-07 10:45:40,423 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/test2/test2/osm-axial-map.graph ok
+2023-01-07 10:45:40,423 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2023-01-07 10:45:40,423 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2023-01-07 10:45:40,424 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/test2/test2/osm-axial-map.graph -o /results/test2/test2/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.010705¬
+2023-01-07 10:45:40,424 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/test2/test2/osm-axial-analysis.graph -o /results/test2/test2/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2023-01-07 10:45:40,429 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/test2/test2/osm-segment-map.graph ok
+2023-01-07 10:45:40,429 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2023-01-07 10:45:40,430 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2023-01-07 10:45:40,430 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/test2/test2/osm-segment-map.graph -o /results/test2/test2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.011981¬
+2023-01-07 10:45:40,431 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/test2/test2/osm-segment-analysis.graph -o /results/test2/test2/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2023-01-07 10:45:40,435 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/test2/test2/osm-axial-analysis.graph ok
+2023-01-07 10:45:40,436 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/test2/test2/osm-axial-analysis.graph -o /results/test2/test2/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.011531¬
+2023-01-07 10:45:40,495 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/test2/test2/osm-segment-analysis.graph ok
+2023-01-07 10:45:40,495 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/test2/test2/osm-segment-analysis.graph -o /results/test2/test2/osm.segment.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.064476¬
+2023-01-07 10:45:40,553 : INFO : space-syntax : Exported axial files: 
+2023-01-07 10:45:40,553 : INFO : space-syntax : Exported segment files: 
+2023-01-07 10:45:40,553 : INFO : space-syntax : Operation test2 took 0:00:00.528058
+2023-01-07 10:47:56,214 : INFO : space-syntax : Starting operation test2
+2023-01-07 10:47:56,214 : INFO : space-syntax : Downloading osm files...
+2023-01-07 10:47:56,214 : INFO : space-syntax : Downloading map for: test2.osm ...
+2023-01-07 10:47:56,381 : INFO : space-syntax : Downloading osm files took 0:00:00.168636
+2023-01-07 10:47:56,382 : INFO : space-syntax : Converting /results/test2/test2/osm.shp to /results/test2/test2/osm.dxf
+2023-01-07 10:47:56,549 : INFO : space-syntax : CRS:  epsg:32634
+2023-01-07 10:47:56,565 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2023-01-07 10:47:56,573 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2023-01-07 10:47:56,574 : INFO : space-syntax : ['depthmapXcli -v ' exited with 0] and took 0:00:00.008976¬
+2023-01-07 10:47:56,574 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/test2/test2/osm.dxf' -o '/results/test2/test2/osm.graph'  because: Transform dxf to shape file
+2023-01-07 10:47:56,583 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/test2/test2/osm.dxf' -o '/results/test2/test2/osm.graph' " exited with None] and took 0:00:00.008745¬
+2023-01-07 10:47:56,583 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/test2/test2/osm.graph -o /results/test2/test2/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2023-01-07 10:47:56,588 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2023-01-07 10:47:56,588 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/test2/test2/osm.graph -o /results/test2/test2/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2023-01-07 10:47:56,593 : INFO : space-syntax : Converting to axial map -> Loading graph /results/test2/test2/osm.graph ok
+2023-01-07 10:47:56,594 : INFO : space-syntax : Converting to axial map ->  ok
+2023-01-07 10:47:56,594 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2023-01-07 10:47:56,594 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/test2/test2/osm.graph -o /results/test2/test2/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.010867¬
+2023-01-07 10:47:56,594 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/test2/test2/osm-axial-map.graph -o /results/test2/test2/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2023-01-07 10:47:56,599 : INFO : space-syntax : Converting to segment map -> Loading graph /results/test2/test2/osm.graph ok
+2023-01-07 10:47:56,599 : INFO : space-syntax : Converting to segment map ->  ok
+2023-01-07 10:47:56,599 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2023-01-07 10:47:56,599 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/test2/test2/osm.graph -o /results/test2/test2/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.011415¬
+2023-01-07 10:47:56,600 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/test2/test2/osm-segment-map.graph -o /results/test2/test2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2023-01-07 10:47:56,605 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/test2/test2/osm-axial-map.graph ok
+2023-01-07 10:47:56,605 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2023-01-07 10:47:56,605 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2023-01-07 10:47:56,605 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/test2/test2/osm-axial-map.graph -o /results/test2/test2/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.011003¬
+2023-01-07 10:47:56,605 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/test2/test2/osm-axial-analysis.graph -o /results/test2/test2/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2023-01-07 10:47:56,610 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/test2/test2/osm-segment-map.graph ok
+2023-01-07 10:47:56,611 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2023-01-07 10:47:56,611 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2023-01-07 10:47:56,612 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/test2/test2/osm-segment-map.graph -o /results/test2/test2/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.012346¬
+2023-01-07 10:47:56,612 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/test2/test2/osm-segment-analysis.graph -o /results/test2/test2/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2023-01-07 10:47:56,617 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/test2/test2/osm-axial-analysis.graph ok
+2023-01-07 10:47:56,617 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/test2/test2/osm-axial-analysis.graph -o /results/test2/test2/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.012131¬
+2023-01-07 10:47:56,677 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/test2/test2/osm-segment-analysis.graph ok
+2023-01-07 10:47:56,677 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/test2/test2/osm-segment-analysis.graph -o /results/test2/test2/osm.segment.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.065262¬
+2023-01-07 10:47:56,736 : INFO : space-syntax : Exported axial files: 
+2023-01-07 10:47:56,736 : INFO : space-syntax : Exported segment files: 
+2023-01-07 10:47:56,736 : INFO : space-syntax : Operation test2 took 0:00:00.523113

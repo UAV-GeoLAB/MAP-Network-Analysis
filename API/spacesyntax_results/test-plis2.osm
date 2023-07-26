@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="ogr2osm 1.1.2" upload="false">
+<node visible="true" id="-1" lat="52.219961166" lon="21.009202052"/>
+<node visible="true" id="-2" lat="52.22088561" lon="21.011624413"/>
+<node visible="true" id="-4" lat="52.219827447" lon="21.009168429"/>
+<node visible="true" id="-6" lat="52.220061255" lon="21.008858413"/>
+<node visible="true" id="-8" lat="52.221110682" lon="21.013326497"/>
+<node visible="true" id="-10" lat="52.221357996" lon="21.010736544"/>
+<node visible="true" id="-12" lat="52.219702494" lon="21.012598549"/>
+<node visible="true" id="-14" lat="52.221443859" lon="21.009544065"/>
+<node visible="true" id="-19" lat="52.220657936" lon="21.011923621"/>
+<node visible="true" id="-20" lat="52.220426466" lon="21.011895893"/>
+<node visible="true" id="-21" lat="52.219927608" lon="21.011723309"/>
+<node visible="true" id="-22" lat="52.219950545" lon="21.010531498"/>
+<node visible="true" id="-23" lat="52.220352373" lon="21.010227148"/>
+<way visible="true" id="-3"><nd ref="-1"/><nd ref="-2"/><tag k="image_name" v="test-plis2.PNG"/><tag k="weight" v="285.364803058164966"/><tag k="betweennes" v="0.321428571428571"/><tag k="betweenn_1" v="0.214285714285714"/></way>
+<way visible="true" id="-5"><nd ref="-1"/><nd ref="-4"/><tag k="image_name" v="test-plis2.PNG"/><tag k="weight" v="14.558751528167193"/><tag k="betweennes" v="0.321428571428571"/><tag k="betweenn_1" v="0.285714285714286"/></way>
+<way visible="true" id="-7"><nd ref="-1"/><nd ref="-6"/><tag k="image_name" v="test-plis2.PNG"/><tag k="weight" v="39.796615306561648"/><tag k="betweennes" v="0.375000000000000"/><tag k="betweenn_1" v="0.321428571428571"/></way>
+<way visible="true" id="-9"><nd ref="-2"/><nd ref="-8"/><tag k="image_name" v="test-plis2.PNG"/><tag k="weight" v="190.507394811314612"/><tag k="betweennes" v="0.267857142857143"/><tag k="betweenn_1" v="0.178571428571429"/></way>
+<way visible="true" id="-11"><nd ref="-2"/><nd ref="-10"/><tag k="image_name" v="test-plis2.PNG"/><tag k="weight" v="111.242531730944634"/><tag k="betweennes" v="0.089285714285714"/><tag k="betweenn_1" v="0.071428571428571"/></way>
+<way visible="true" id="-13"><nd ref="-4"/><nd ref="-12"/><tag k="image_name" v="test-plis2.PNG"/><tag k="weight" v="381.967494020598167"/><tag k="betweennes" v="0.089285714285714"/><tag k="betweenn_1" v="0.107142857142857"/></way>
+<way visible="true" id="-15"><nd ref="-6"/><nd ref="-14"/><tag k="image_name" v="test-plis2.PNG"/><tag k="weight" v="163.812066095632815"/><tag k="betweennes" v="0.214285714285714"/><tag k="betweenn_1" v="0.214285714285714"/></way>
+<way visible="true" id="-16"><nd ref="-8"/><nd ref="-12"/><tag k="image_name" v="test-plis2.PNG"/><tag k="weight" v="168.359695965557421"/><tag k="betweennes" v="0.089285714285714"/><tag k="betweenn_1" v="0.142857142857143"/></way>
+<way visible="true" id="-17"><nd ref="-8"/><nd ref="-10"/><tag k="image_name" v="test-plis2.PNG"/><tag k="weight" v="289.633099746015375"/><tag k="betweennes" v="0.107142857142857"/><tag k="betweenn_1" v="0.142857142857143"/></way>
+<way visible="true" id="-18"><nd ref="-10"/><nd ref="-14"/><tag k="image_name" v="test-plis2.PNG"/><tag k="weight" v="133.080794531401466"/><tag k="betweennes" v="0.214285714285714"/><tag k="betweenn_1" v="0.250000000000000"/></way>
+<way visible="true" id="-24"><nd ref="-2"/><nd ref="-19"/><nd ref="-20"/><nd ref="-21"/><nd ref="-22"/><nd ref="-23"/><tag k="image_name" v=""/><tag k="weight" v=""/><tag k="betweennes" v=""/><tag k="betweenn_1" v=""/></way>
+</osm>

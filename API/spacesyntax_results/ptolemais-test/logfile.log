@@ -1,0 +1,285 @@
+2022-12-17 14:51:03,435 : INFO : space-syntax : Starting operation ptolemais-test
+2022-12-17 14:51:03,435 : INFO : space-syntax : Downloading osm files...
+2022-12-17 14:51:03,435 : INFO : space-syntax : Downloading map for: ptolemais-test.osm ...
+2022-12-17 14:51:03,605 : INFO : space-syntax : Downloading osm files took 0:00:00.171787
+2022-12-17 14:51:03,606 : INFO : space-syntax : Converting /results/ptolemais-test/ptolemais-test/osm.shp to /results/ptolemais-test/ptolemais-test/osm.dxf
+2022-12-17 14:51:03,635 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2022-12-17 14:51:03,644 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2022-12-17 14:51:03,645 : INFO : space-syntax : ['depthmapXcli -v ' exited with 0] and took 0:00:00.009535¬
+2022-12-17 14:51:03,645 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/ptolemais-test/ptolemais-test/osm.dxf' -o '/results/ptolemais-test/ptolemais-test/osm.graph'  because: Transform dxf to shape file
+2022-12-17 14:51:03,654 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/ptolemais-test/ptolemais-test/osm.dxf' -o '/results/ptolemais-test/ptolemais-test/osm.graph' " exited with None] and took 0:00:00.008658¬
+2022-12-17 14:51:03,654 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2022-12-17 14:51:03,659 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2022-12-17 14:51:03,659 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2022-12-17 14:51:03,664 : INFO : space-syntax : Converting to axial map -> Loading graph /results/ptolemais-test/ptolemais-test/osm.graph ok
+2022-12-17 14:51:03,664 : INFO : space-syntax : Converting to axial map ->  ok
+2022-12-17 14:51:03,664 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2022-12-17 14:51:03,664 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.010350¬
+2022-12-17 14:51:03,665 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2022-12-17 14:51:03,669 : INFO : space-syntax : Converting to segment map -> Loading graph /results/ptolemais-test/ptolemais-test/osm.graph ok
+2022-12-17 14:51:03,670 : INFO : space-syntax : Converting to segment map ->  ok
+2022-12-17 14:51:03,670 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2022-12-17 14:51:03,670 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.011040¬
+2022-12-17 14:51:03,670 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2022-12-17 14:51:03,675 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/ptolemais-test/ptolemais-test/osm-axial-map.graph ok
+2022-12-17 14:51:03,675 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2022-12-17 14:51:03,675 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2022-12-17 14:51:03,675 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.010854¬
+2022-12-17 14:51:03,676 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2022-12-17 14:51:03,680 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/ptolemais-test/ptolemais-test/osm-segment-map.graph ok
+2022-12-17 14:51:03,680 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2022-12-17 14:51:03,680 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2022-12-17 14:51:03,681 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.010334¬
+2022-12-17 14:51:03,681 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2022-12-17 14:51:03,686 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph ok
+2022-12-17 14:51:03,686 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.010662¬
+2022-12-17 14:51:03,722 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph ok
+2022-12-17 14:51:03,722 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.segment.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.041496¬
+2022-12-17 14:51:03,754 : INFO : space-syntax : Exported axial files: 
+2022-12-17 14:51:03,754 : INFO : space-syntax : Exported segment files: 
+2022-12-17 14:51:03,754 : INFO : space-syntax : Operation ptolemais-test took 0:00:00.320437
+2022-12-17 14:53:47,396 : INFO : space-syntax : Starting operation ptolemais-test
+2022-12-17 14:53:47,396 : INFO : space-syntax : Downloading osm files...
+2022-12-17 14:53:47,396 : INFO : space-syntax : Downloading map for: ptolemais-test.osm ...
+2022-12-17 14:53:47,557 : INFO : space-syntax : Downloading osm files took 0:00:00.162431
+2022-12-17 14:53:47,558 : INFO : space-syntax : Converting /results/ptolemais-test/ptolemais-test/osm.shp to /results/ptolemais-test/ptolemais-test/osm.dxf
+2022-12-17 14:53:47,587 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2022-12-17 14:53:47,595 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2022-12-17 14:53:47,596 : INFO : space-syntax : ['depthmapXcli -v ' exited with 0] and took 0:00:00.008526¬
+2022-12-17 14:53:47,596 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/ptolemais-test/ptolemais-test/osm.dxf' -o '/results/ptolemais-test/ptolemais-test/osm.graph'  because: Transform dxf to shape file
+2022-12-17 14:53:47,604 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/ptolemais-test/ptolemais-test/osm.dxf' -o '/results/ptolemais-test/ptolemais-test/osm.graph' " exited with None] and took 0:00:00.007752¬
+2022-12-17 14:53:47,604 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2022-12-17 14:53:47,608 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2022-12-17 14:53:47,609 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2022-12-17 14:53:47,614 : INFO : space-syntax : Converting to axial map -> Loading graph /results/ptolemais-test/ptolemais-test/osm.graph ok
+2022-12-17 14:53:47,614 : INFO : space-syntax : Converting to axial map ->  ok
+2022-12-17 14:53:47,614 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2022-12-17 14:53:47,614 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.009916¬
+2022-12-17 14:53:47,614 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2022-12-17 14:53:47,619 : INFO : space-syntax : Converting to segment map -> Loading graph /results/ptolemais-test/ptolemais-test/osm.graph ok
+2022-12-17 14:53:47,619 : INFO : space-syntax : Converting to segment map ->  ok
+2022-12-17 14:53:47,619 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2022-12-17 14:53:47,619 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.010692¬
+2022-12-17 14:53:47,620 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2022-12-17 14:53:47,624 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/ptolemais-test/ptolemais-test/osm-axial-map.graph ok
+2022-12-17 14:53:47,624 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2022-12-17 14:53:47,625 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2022-12-17 14:53:47,625 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.010631¬
+2022-12-17 14:53:47,625 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2022-12-17 14:53:47,629 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/ptolemais-test/ptolemais-test/osm-segment-map.graph ok
+2022-12-17 14:53:47,630 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2022-12-17 14:53:47,630 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2022-12-17 14:53:47,630 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.010479¬
+2022-12-17 14:53:47,630 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2022-12-17 14:53:47,635 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph ok
+2022-12-17 14:53:47,635 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.009919¬
+2022-12-17 14:53:47,671 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph ok
+2022-12-17 14:53:47,671 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.segment.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.040559¬
+2022-12-17 14:53:47,703 : INFO : space-syntax : Exported axial files: 
+2022-12-17 14:53:47,703 : INFO : space-syntax : Exported segment files: 
+2022-12-17 14:53:47,703 : INFO : space-syntax : Operation ptolemais-test took 0:00:00.307940
+2023-03-10 15:53:20,830 : INFO : space-syntax : Starting operation ptolemais-test
+2023-03-10 15:53:20,831 : INFO : space-syntax : Downloading osm files...
+2023-03-10 15:53:20,831 : INFO : space-syntax : Downloading map for: ptolemais-test.osm ...
+2023-03-10 15:53:21,004 : INFO : space-syntax : Downloading osm files took 0:00:00.175164
+2023-03-10 15:53:21,004 : INFO : space-syntax : Converting /results/ptolemais-test/ptolemais-test/osm.shp to /results/ptolemais-test/ptolemais-test/osm.dxf
+2023-03-10 15:53:21,179 : INFO : space-syntax : CRS:  epsg:32634
+2023-03-10 15:53:21,193 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2023-03-10 15:53:21,204 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2023-03-10 15:53:21,205 : INFO : space-syntax : ['depthmapXcli -v ' exited with 0] and took 0:00:00.011885¬
+2023-03-10 15:53:21,205 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/ptolemais-test/ptolemais-test/osm.dxf' -o '/results/ptolemais-test/ptolemais-test/osm.graph'  because: Transform dxf to shape file
+2023-03-10 15:53:21,216 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/ptolemais-test/ptolemais-test/osm.dxf' -o '/results/ptolemais-test/ptolemais-test/osm.graph' " exited with 0] and took 0:00:00.011109¬
+2023-03-10 15:53:21,216 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2023-03-10 15:53:21,223 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2023-03-10 15:53:21,223 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2023-03-10 15:53:21,229 : INFO : space-syntax : Converting to axial map -> Loading graph /results/ptolemais-test/ptolemais-test/osm.graph ok
+2023-03-10 15:53:21,229 : INFO : space-syntax : Converting to axial map ->  ok
+2023-03-10 15:53:21,229 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2023-03-10 15:53:21,230 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.013059¬
+2023-03-10 15:53:21,230 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2023-03-10 15:53:21,236 : INFO : space-syntax : Converting to segment map -> Loading graph /results/ptolemais-test/ptolemais-test/osm.graph ok
+2023-03-10 15:53:21,236 : INFO : space-syntax : Converting to segment map ->  ok
+2023-03-10 15:53:21,236 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2023-03-10 15:53:21,236 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.013337¬
+2023-03-10 15:53:21,237 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2023-03-10 15:53:21,242 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/ptolemais-test/ptolemais-test/osm-axial-map.graph ok
+2023-03-10 15:53:21,243 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2023-03-10 15:53:21,243 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2023-03-10 15:53:21,243 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.013330¬
+2023-03-10 15:53:21,243 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2023-03-10 15:53:21,249 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/ptolemais-test/ptolemais-test/osm-segment-map.graph ok
+2023-03-10 15:53:21,249 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2023-03-10 15:53:21,249 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2023-03-10 15:53:21,249 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.012667¬
+2023-03-10 15:53:21,249 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2023-03-10 15:53:21,255 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph ok
+2023-03-10 15:53:21,255 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.011909¬
+2023-03-10 15:53:21,293 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph ok
+2023-03-10 15:53:21,293 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.segment.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.043951¬
+2023-03-10 15:53:21,333 : INFO : space-syntax : Exported axial files: 
+2023-03-10 15:53:21,333 : INFO : space-syntax : Exported segment files: 
+2023-03-10 15:53:21,333 : INFO : space-syntax : Operation ptolemais-test took 0:00:00.504074
+2023-03-10 15:53:56,922 : INFO : space-syntax : Starting operation ptolemais-test
+2023-03-10 15:53:56,922 : INFO : space-syntax : Downloading osm files...
+2023-03-10 15:53:56,922 : INFO : space-syntax : Downloading map for: ptolemais-test.osm ...
+2023-03-10 15:53:57,072 : INFO : space-syntax : Downloading osm files took 0:00:00.151503
+2023-03-10 15:53:57,072 : INFO : space-syntax : Converting /results/ptolemais-test/ptolemais-test/osm.shp to /results/ptolemais-test/ptolemais-test/osm.dxf
+2023-03-10 15:53:57,244 : INFO : space-syntax : CRS:  epsg:32634
+2023-03-10 15:53:57,256 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2023-03-10 15:53:57,266 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2023-03-10 15:53:57,267 : INFO : space-syntax : ['depthmapXcli -v ' exited with 0] and took 0:00:00.010774¬
+2023-03-10 15:53:57,267 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/ptolemais-test/ptolemais-test/osm.dxf' -o '/results/ptolemais-test/ptolemais-test/osm.graph'  because: Transform dxf to shape file
+2023-03-10 15:53:57,277 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/ptolemais-test/ptolemais-test/osm.dxf' -o '/results/ptolemais-test/ptolemais-test/osm.graph' " exited with 0] and took 0:00:00.009516¬
+2023-03-10 15:53:57,277 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2023-03-10 15:53:57,283 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2023-03-10 15:53:57,283 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2023-03-10 15:53:57,289 : INFO : space-syntax : Converting to axial map -> Loading graph /results/ptolemais-test/ptolemais-test/osm.graph ok
+2023-03-10 15:53:57,289 : INFO : space-syntax : Converting to axial map ->  ok
+2023-03-10 15:53:57,289 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2023-03-10 15:53:57,290 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.012239¬
+2023-03-10 15:53:57,290 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2023-03-10 15:53:57,296 : INFO : space-syntax : Converting to segment map -> Loading graph /results/ptolemais-test/ptolemais-test/osm.graph ok
+2023-03-10 15:53:57,296 : INFO : space-syntax : Converting to segment map ->  ok
+2023-03-10 15:53:57,296 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2023-03-10 15:53:57,296 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.013277¬
+2023-03-10 15:53:57,297 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2023-03-10 15:53:57,302 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/ptolemais-test/ptolemais-test/osm-axial-map.graph ok
+2023-03-10 15:53:57,302 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2023-03-10 15:53:57,302 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2023-03-10 15:53:57,303 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.012962¬
+2023-03-10 15:53:57,303 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2023-03-10 15:53:57,308 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/ptolemais-test/ptolemais-test/osm-segment-map.graph ok
+2023-03-10 15:53:57,308 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2023-03-10 15:53:57,308 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2023-03-10 15:53:57,309 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.012027¬
+2023-03-10 15:53:57,309 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2023-03-10 15:53:57,314 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph ok
+2023-03-10 15:53:57,315 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.011933¬
+2023-03-10 15:53:57,352 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph ok
+2023-03-10 15:53:57,353 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.segment.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.043816¬
+2023-03-10 15:53:57,386 : INFO : space-syntax : Exported axial files: 
+2023-03-10 15:53:57,386 : INFO : space-syntax : Exported segment files: 
+2023-03-10 15:53:57,386 : INFO : space-syntax : Operation ptolemais-test took 0:00:00.466063
+2023-03-10 15:58:24,132 : INFO : space-syntax : Starting operation ptolemais-test
+2023-03-10 15:58:24,132 : INFO : space-syntax : Downloading osm files...
+2023-03-10 15:58:24,132 : INFO : space-syntax : Downloading map for: ptolemais-test.osm ...
+2023-03-10 15:58:24,303 : INFO : space-syntax : Downloading osm files took 0:00:00.172409
+2023-03-10 15:58:24,303 : INFO : space-syntax : Converting /results/ptolemais-test/ptolemais-test/osm.shp to /results/ptolemais-test/ptolemais-test/osm.dxf
+2023-03-10 15:58:24,477 : INFO : space-syntax : CRS:  epsg:32634
+2023-03-10 15:58:24,490 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2023-03-10 15:58:24,502 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2023-03-10 15:58:24,502 : INFO : space-syntax : ['depthmapXcli -v ' exited with 0] and took 0:00:00.012086¬
+2023-03-10 15:58:24,503 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/ptolemais-test/ptolemais-test/osm.dxf' -o '/results/ptolemais-test/ptolemais-test/osm.graph'  because: Transform dxf to shape file
+2023-03-10 15:58:24,513 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/ptolemais-test/ptolemais-test/osm.dxf' -o '/results/ptolemais-test/ptolemais-test/osm.graph' " exited with 0] and took 0:00:00.010487¬
+2023-03-10 15:58:24,513 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2023-03-10 15:58:24,520 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2023-03-10 15:58:24,520 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2023-03-10 15:58:24,526 : INFO : space-syntax : Converting to axial map -> Loading graph /results/ptolemais-test/ptolemais-test/osm.graph ok
+2023-03-10 15:58:24,526 : INFO : space-syntax : Converting to axial map ->  ok
+2023-03-10 15:58:24,526 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2023-03-10 15:58:24,526 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.012933¬
+2023-03-10 15:58:24,527 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2023-03-10 15:58:24,532 : INFO : space-syntax : Converting to segment map -> Loading graph /results/ptolemais-test/ptolemais-test/osm.graph ok
+2023-03-10 15:58:24,533 : INFO : space-syntax : Converting to segment map ->  ok
+2023-03-10 15:58:24,533 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2023-03-10 15:58:24,533 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.013037¬
+2023-03-10 15:58:24,533 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2023-03-10 15:58:24,538 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/ptolemais-test/ptolemais-test/osm-axial-map.graph ok
+2023-03-10 15:58:24,539 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2023-03-10 15:58:24,539 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2023-03-10 15:58:24,539 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.012392¬
+2023-03-10 15:58:24,539 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2023-03-10 15:58:24,545 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/ptolemais-test/ptolemais-test/osm-segment-map.graph ok
+2023-03-10 15:58:24,545 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2023-03-10 15:58:24,545 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2023-03-10 15:58:24,545 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.012016¬
+2023-03-10 15:58:24,545 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2023-03-10 15:58:24,551 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph ok
+2023-03-10 15:58:24,551 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.012169¬
+2023-03-10 15:58:24,588 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph ok
+2023-03-10 15:58:24,588 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.segment.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.042953¬
+2023-03-10 15:58:24,620 : INFO : space-syntax : Exported axial files: 
+2023-03-10 15:58:24,620 : INFO : space-syntax : Exported segment files: 
+2023-03-10 15:58:24,620 : INFO : space-syntax : Operation ptolemais-test took 0:00:00.489572
+2023-03-10 16:03:45,717 : INFO : space-syntax : Starting operation ptolemais-test
+2023-03-10 16:03:45,717 : INFO : space-syntax : Downloading osm files...
+2023-03-10 16:03:45,717 : INFO : space-syntax : Downloading map for: ptolemais-test.osm ...
+2023-03-10 16:03:45,873 : INFO : space-syntax : Downloading osm files took 0:00:00.157972
+2023-03-10 16:03:45,874 : INFO : space-syntax : Converting /results/ptolemais-test/ptolemais-test/osm.shp to /results/ptolemais-test/ptolemais-test/osm.dxf
+2023-03-10 16:03:46,045 : INFO : space-syntax : CRS:  epsg:32634
+2023-03-10 16:03:46,058 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2023-03-10 16:03:46,067 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2023-03-10 16:03:46,068 : INFO : space-syntax : ['depthmapXcli -v ' exited with 0] and took 0:00:00.009976¬
+2023-03-10 16:03:46,068 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/ptolemais-test/ptolemais-test/osm.dxf' -o '/results/ptolemais-test/ptolemais-test/osm.graph'  because: Transform dxf to shape file
+2023-03-10 16:03:46,078 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/ptolemais-test/ptolemais-test/osm.dxf' -o '/results/ptolemais-test/ptolemais-test/osm.graph' " exited with 0] and took 0:00:00.009795¬
+2023-03-10 16:03:46,078 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2023-03-10 16:03:46,084 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2023-03-10 16:03:46,084 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2023-03-10 16:03:46,090 : INFO : space-syntax : Converting to axial map -> Loading graph /results/ptolemais-test/ptolemais-test/osm.graph ok
+2023-03-10 16:03:46,090 : INFO : space-syntax : Converting to axial map ->  ok
+2023-03-10 16:03:46,090 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2023-03-10 16:03:46,091 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.012504¬
+2023-03-10 16:03:46,091 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2023-03-10 16:03:46,096 : INFO : space-syntax : Converting to segment map -> Loading graph /results/ptolemais-test/ptolemais-test/osm.graph ok
+2023-03-10 16:03:46,096 : INFO : space-syntax : Converting to segment map ->  ok
+2023-03-10 16:03:46,096 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2023-03-10 16:03:46,096 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.012075¬
+2023-03-10 16:03:46,096 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2023-03-10 16:03:46,101 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/ptolemais-test/ptolemais-test/osm-axial-map.graph ok
+2023-03-10 16:03:46,102 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2023-03-10 16:03:46,102 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2023-03-10 16:03:46,102 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.011286¬
+2023-03-10 16:03:46,102 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2023-03-10 16:03:46,107 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/ptolemais-test/ptolemais-test/osm-segment-map.graph ok
+2023-03-10 16:03:46,108 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2023-03-10 16:03:46,108 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2023-03-10 16:03:46,108 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.011492¬
+2023-03-10 16:03:46,108 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2023-03-10 16:03:46,113 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph ok
+2023-03-10 16:03:46,114 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.011670¬
+2023-03-10 16:03:46,150 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph ok
+2023-03-10 16:03:46,150 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.segment.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.042236¬
+2023-03-10 16:03:46,182 : INFO : space-syntax : Exported axial files: 
+2023-03-10 16:03:46,183 : INFO : space-syntax : Exported segment files: 
+2023-03-10 16:03:46,183 : INFO : space-syntax : Operation ptolemais-test took 0:00:00.467217
+2023-03-10 16:08:31,941 : INFO : space-syntax : Starting operation ptolemais-test
+2023-03-10 16:08:31,941 : INFO : space-syntax : Downloading osm files...
+2023-03-10 16:08:31,941 : INFO : space-syntax : Downloading map for: ptolemais-test.osm ...
+2023-03-10 16:08:32,100 : INFO : space-syntax : Downloading osm files took 0:00:00.160733
+2023-03-10 16:08:32,101 : INFO : space-syntax : Converting /results/ptolemais-test/ptolemais-test/osm.shp to /results/ptolemais-test/ptolemais-test/osm.dxf
+2023-03-10 16:08:32,271 : INFO : space-syntax : CRS:  epsg:32634
+2023-03-10 16:08:32,283 : INFO : space-syntax : running: depthmapXcli -v  because: Using depthmapX cli version:
+2023-03-10 16:08:32,294 : INFO : space-syntax : Using depthmapX cli version: -> depthmapX 0.8.0
+2023-03-10 16:08:32,295 : INFO : space-syntax : ['depthmapXcli -v ' exited with None] and took 0:00:00.011349¬
+2023-03-10 16:08:32,295 : INFO : space-syntax : running: depthmapXcli -m IMPORT -it drawing -f '/results/ptolemais-test/ptolemais-test/osm.dxf' -o '/results/ptolemais-test/ptolemais-test/osm.graph'  because: Transform dxf to shape file
+2023-03-10 16:08:32,305 : INFO : space-syntax : ["depthmapXcli -m IMPORT -it drawing -f '/results/ptolemais-test/ptolemais-test/osm.dxf' -o '/results/ptolemais-test/ptolemais-test/osm.graph' " exited with 0] and took 0:00:00.010169¬
+2023-03-10 16:08:32,306 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -p -co axial -con axialMap because: Converting to axial map
+2023-03-10 16:08:32,311 : INFO : space-syntax : This operation may take longer than 25 minutes to complete!!!
+2023-03-10 16:08:32,312 : INFO : space-syntax : running: depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -p -co segment -con segmentMap because: Converting to segment map
+2023-03-10 16:08:32,318 : INFO : space-syntax : Converting to axial map -> Loading graph /results/ptolemais-test/ptolemais-test/osm.graph ok
+2023-03-10 16:08:32,319 : INFO : space-syntax : Converting to axial map ->  ok
+2023-03-10 16:08:32,319 : INFO : space-syntax : Converting to axial map -> Writing out result... ok
+2023-03-10 16:08:32,319 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -p -co axial -con axialMap' exited with 0] and took 0:00:00.013274¬
+2023-03-10 16:08:32,319 : INFO : space-syntax : running: depthmapXcli -m AXIAL -f /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -p -xa n -xac 3,300,n because: Performing axial analysis
+2023-03-10 16:08:32,324 : INFO : space-syntax : Converting to segment map -> Loading graph /results/ptolemais-test/ptolemais-test/osm.graph ok
+2023-03-10 16:08:32,325 : INFO : space-syntax : Converting to segment map ->  ok
+2023-03-10 16:08:32,325 : INFO : space-syntax : Converting to segment map -> Writing out result... ok
+2023-03-10 16:08:32,325 : INFO : space-syntax : ['depthmapXcli -m MAPCONVERT -f /results/ptolemais-test/ptolemais-test/osm.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -p -co segment -con segmentMap' exited with 0] and took 0:00:00.013362¬
+2023-03-10 16:08:32,325 : INFO : space-syntax : running: depthmapXcli -m SEGMENT -f /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n because: Performing segment analysis
+2023-03-10 16:08:32,330 : INFO : space-syntax : Performing axial analysis -> Loading graph /results/ptolemais-test/ptolemais-test/osm-axial-map.graph ok
+2023-03-10 16:08:32,331 : INFO : space-syntax : Performing axial analysis -> Running axial analysis... ok
+2023-03-10 16:08:32,331 : INFO : space-syntax : Performing axial analysis -> Writing out result... ok
+2023-03-10 16:08:32,331 : INFO : space-syntax : ['depthmapXcli -m AXIAL -f /results/ptolemais-test/ptolemais-test/osm-axial-map.graph -o /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -p -xa n -xac 3,300,n' exited with 0] and took 0:00:00.012027¬
+2023-03-10 16:08:32,331 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.axial.mif -em shapegraph-map-mif because: Exporting axial analysis to mif
+2023-03-10 16:08:32,336 : INFO : space-syntax : Performing segment analysis -> Loading graph /results/ptolemais-test/ptolemais-test/osm-segment-map.graph ok
+2023-03-10 16:08:32,337 : INFO : space-syntax : Performing segment analysis -> Running segment analysis... ok
+2023-03-10 16:08:32,337 : INFO : space-syntax : Performing segment analysis -> Writing out result... ok
+2023-03-10 16:08:32,337 : INFO : space-syntax : ['depthmapXcli -m SEGMENT -f /results/ptolemais-test/ptolemais-test/osm-segment-map.graph -o /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -p  -st tulip -srt metric -sic n -stb 1024 -sr 300,1000,n' exited with 0] and took 0:00:00.011630¬
+2023-03-10 16:08:32,337 : INFO : space-syntax : running: depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.segment.mif -em shapegraph-map-mif because: Exporting segment analysis to mif
+2023-03-10 16:08:32,342 : INFO : space-syntax : Exporting axial analysis to mif -> Loading graph /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph ok
+2023-03-10 16:08:32,343 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-axial-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.axial.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.011521¬
+2023-03-10 16:08:32,380 : INFO : space-syntax : Exporting segment analysis to mif -> Loading graph /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph ok
+2023-03-10 16:08:32,380 : INFO : space-syntax : ['depthmapXcli -m EXPORT -f /results/ptolemais-test/ptolemais-test/osm-segment-analysis.graph -o /results/ptolemais-test/ptolemais-test/osm.segment.mif -em shapegraph-map-mif' exited with 0] and took 0:00:00.043241¬
+2023-03-10 16:08:32,413 : INFO : space-syntax : Exported axial files: 
+2023-03-10 16:08:32,413 : INFO : space-syntax : Exported segment files: 
+2023-03-10 16:08:32,413 : INFO : space-syntax : Operation ptolemais-test took 0:00:00.473817
