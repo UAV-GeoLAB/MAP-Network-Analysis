@@ -1,0 +1,3 @@
+[submodule "space-syntax-for-MAP-project"]
+	path = space-syntax-for-MAP-project
+	url = https://github.com/jmodrzewski12/space-syntax-for-MAP-project.git
