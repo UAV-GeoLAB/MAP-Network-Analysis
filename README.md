@@ -17,6 +17,9 @@ The tool is a prototype system for comparing spatial layouts in ancient cities. 
 
 
 
+## Architecture
+![alt text](https://github.com/UAV-GeoLAB/MAP-Network-Analysis/blob/main/references/architecture-diagram.png)
+
 
 ## Funding
 This work was supported by the National Science Centre (NCN), Poland as a part of MA-P Maloutena and Agora in the layout of Paphos: Modelling the cityscape of the Hellenistic and Roman capital of Cyprus project, OPUS 18 grant No. 2019/35/B/HS3/02296.
