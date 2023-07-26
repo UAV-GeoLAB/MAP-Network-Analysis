@@ -21,7 +21,7 @@ from PIL import Image
 from shp2osm import shp2osm
 from parse_georef import getGcpsFromPixels, transform_ogr, getGcpsFromWGS, save_to_postgres
 from networkx_analysis import DrawGraph
-from ShapefileToNetwork.main.convertor import divide, postprocessing
+from . import postprocessing
 
 
 models.Base.metadata.create_all(bind=engine)
