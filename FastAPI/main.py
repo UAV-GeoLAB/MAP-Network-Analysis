@@ -35,7 +35,7 @@ DBPASSWORD = ''
 PORT = ''
 DBADDRESS = 'localhost'
 
-USER = 'user'
+USER = 'user'  #  computer user need writing permission for saving analysis results 
 
 app = FastAPI()
 # Dependency
