@@ -26,9 +26,9 @@ The tool is a prototype system for comparing spatial layouts in ancient cities. 
 To deploy application, you need to install and setup a few components.
 
 Firstly, install python dependencies from API directory:
-'''
+```
 pip install -r requirements.txt
-'''
+```
 
 
 ### API
