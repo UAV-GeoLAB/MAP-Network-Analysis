@@ -11,7 +11,7 @@ The tool is a prototype system for comparing spatial layouts in ancient cities. 
 - PostgreSQL (https://www.postgresql.org.pl/) - relational database
 - FastAPI (https://fastapi.tiangolo.com/) - API which allows to communicate between application and PostgreSQL database
 - GDAL/OGR (https://live.osgeo.org/en/overview/gdal_overview.html)
-- DepthMapX SpaceSyntax Docker (https://github.com/SpaceGroupUCL/depthmapX)
+- DepthMapX SpaceSyntax Docker (https://github.com/digitalcityscience/space-syntax)
 - NetworkX python library (https://networkx.org/)
 - Other python libraries for processing spatial data
 
