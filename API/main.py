@@ -27,7 +27,7 @@ from db_params import SCHEMA, DBNAME, DBUSER, DBPASSWORD, PORT, DBADDRESS
 
 models.Base.metadata.create_all(bind=engine)
 
-IMAGE_DIR = r'D:\pw\projekty\opus\kalamata\portal-analizy\installation-test\images'  # Image directory path served by IIIF server
+IMAGE_DIR = r'\path\to\images'  # Image directory path served by IIIF server
 
 
 USER = os.getlogin( )   #  computer user need writing permission for saving analysis results 
