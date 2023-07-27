@@ -2,7 +2,7 @@ import json
 import re
 import os
 import subprocess
-from main import SCHEMA, DBNAME, DBUSER, DBPASSWORD, PORT, DBADDRESS
+from db_params import SCHEMA, DBNAME, DBUSER, DBPASSWORD, PORT, DBADDRESS
 
 def getImageDimension(ann):
 	selector = ann['target']['selector']['value']

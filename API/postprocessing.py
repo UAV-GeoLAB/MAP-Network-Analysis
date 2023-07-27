@@ -5,7 +5,6 @@ from shapely.ops import unary_union, split, snap, transform, nearest_points, lin
 import shapely.ops
 import itertools
 import geopandas as gpd
-import matplotlib.pyplot as plt
 import pyproj
 import numpy as np
 import pandas as pd

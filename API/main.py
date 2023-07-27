@@ -21,21 +21,16 @@ from PIL import Image
 from shp2osm import shp2osm
 from parse_georef import getGcpsFromPixels, transform_ogr, getGcpsFromWGS, save_to_postgres
 from networkx_analysis import DrawGraph
-from . import postprocessing
+import postprocessing
 
+from db_params import SCHEMA, DBNAME, DBUSER, DBPASSWORD, PORT, DBADDRESS
 
 models.Base.metadata.create_all(bind=engine)
 
-IMAGE_DIR = r''  # Image directory path
-SCHEMA = ''  # Postgres Schema for database storing results from analysis
-DBNAME = ''  # Name database in postgres
+IMAGE_DIR = r'D:\pw\projekty\opus\kalamata\portal-analizy\installation-test\images'  # Image directory path served by IIIF server
 
-DBUSER = ''
-DBPASSWORD = ''
-PORT = ''
-DBADDRESS = 'localhost'
 
-USER = 'user'  #  computer user need writing permission for saving analysis results 
+USER = os.getlogin( )   #  computer user need writing permission for saving analysis results 
 
 app = FastAPI()
 # Dependency
@@ -54,6 +49,13 @@ app.add_middleware(
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
+
+
+
+dirs_for_data = ['Data/wgs', 'Data/utm', 'networkx_results', 'spacesyntax_results', 'vector']
+for dir_data in dirs_for_data:
+    if not os.path.exists(dir_data):
+        os.makedirs(dir_data)
 
 
 @app.get("/")
@@ -91,6 +93,8 @@ def clear_vector(image: str, db: Session = Depends(get_db)):
 
 @app.get("/getGcps/{image}")
 def get_gcps(image: str, db: Session = Depends(get_db)):
+    crud.add_postgis_extension(db)
+    crud.add_geometry_columns(db)
     db_gcps = crud.get_gcps_by_imagename(db, image)
 
     pixel_gcp = {"type": 'FeatureCollection', "features": []}
@@ -283,7 +287,8 @@ async def perform_analysis(imagename: str, db: Session = Depends(get_db)):
 
 
 def perform_spacesyntax(imagename, pathIn, user):
-    command = fr'docker run -v {pathIn}:/results space_syntax {imagename}.osm -u {user}'
+    pathAbs = os.path.abspath(pathIn)
+    command = fr'docker run -v {pathAbs}:/results/ space_syntax {imagename}.osm -u Admin'
     subprocess.run(command, shell=True)
 
 
@@ -399,8 +404,7 @@ def zipfiles(filenames, imagename):
     return resp
 
 @app.get("/download_shp/{image}/{atype}")
-async def download_shp(image: str, atype: str):
-    
+async def download_shp(image: str, atype: str, db: Session = Depends(get_db)):
     imagename = image.split('.')[0]
     dirpath = fr'./export/{imagename}/{atype}'
     if not os.path.exists(dirpath):
@@ -410,8 +414,10 @@ async def download_shp(image: str, atype: str):
     schema = SCHEMA
     if atype == "networkx":
         table  = "networkx_results"
+
         command = fr"""pgsql2shp -f "{dirpath}/networkx_{imagename}.shp" -h {DBADDRESS} -u {DBUSER} -P {DBPASSWORD} -p {PORT} {DBNAME}  "select * from {SCHEMA}.{table} where image_name = '{image}';"
         """
+        print(command)
         subprocess.run(command, shell=True)
 
     elif atype == "spacesyntax":
