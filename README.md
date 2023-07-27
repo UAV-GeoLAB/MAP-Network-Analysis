@@ -1,7 +1,16 @@
 
 # Graph Analysis On Street Network In A Web Browser
 
-The tool is a prototype system for comparing spatial layouts in ancient cities. It allows to conduct simple GIS operations in a web browser (digitizing and georeferencing data) and then perform network analysis on input data. 
+The tool is a prototype system for comparing spatial layouts in ancient cities. It allows to conduct simple GIS operations in a web browser (digitizing and georeferencing data) and then perform network analysis (networkx and spacesyntax analyses) on input data. 
+
+Digitization of street network:
+![alt text](https://github.com/UAV-GeoLAB/MAP-Network-Analysis/blob/main/references/digitization-streetnetwork.png)
+
+Georeferencing:
+![alt text](https://github.com/UAV-GeoLAB/MAP-Network-Analysis/blob/main/references/georefernce.png)
+
+Showing results of network analysis:
+![alt text](https://github.com/UAV-GeoLAB/MAP-Network-Analysis/blob/main/references/results-spacesyntax.png)
 
 ## Dependencies:
 - Leaflet 1.8.0(https://leafletjs.com/)
@@ -54,7 +63,9 @@ uvicorn main:app
 ```
 
 #### SpaceSyntax Docker
-Download docker files from https://github.com/UAV-GeoLAB/space-syntax-for-MAP-project/tree/0a9e7a1243f05844e4a86a3c41df6ad67ad0eef2. It is docker from https://github.com/digitalcityscience/space-syntax, adopted for our application. 
+Download docker files from:
+https://github.com/UAV-GeoLAB/space-syntax-for-MAP-project/tree/0a9e7a1243f05844e4a86a3c41df6ad67ad0eef2. 
+It is docker from https://github.com/digitalcityscience/space-syntax, adopted for our application. 
 
 After downloading docker files and changing to its root folder, build the SpaceSyntax Docker container with tag *space_syntax*:
 ```
@@ -66,10 +77,11 @@ Please download source code of Leaflet and its plugins:
 - https://github.com/Leaflet/Leaflet/releases/tag/v1.8.0
 - https://github.com/mejackreed/Leaflet-IIIF
 - https://github.com/geoman-io/leaflet-geoman.
-Extract above file in *static* directory.
+
+Extract above files in *static* directory.
 
 #### Further configuration
-In *static/urls.js* you can change adresses of FastAPI and Cantaloupe server (if you want deploy these services on non-default adresses). You can also change paths for html files:
+In *static/urls.js* you can change adresses of FastAPI and Cantaloupe server (if you want use these services on non-localhost adresses). You can also change paths for html files:
 ```
 // Urls for static files (needed during deploymend)
 var API_URL = "http://127.0.0.1:8000/" // localhost
