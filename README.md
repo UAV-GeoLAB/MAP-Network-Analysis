@@ -4,12 +4,15 @@
 The tool is a prototype system for comparing spatial layouts in ancient cities. It allows to conduct simple GIS operations in a web browser (digitizing and georeferencing data) and then perform network analysis (networkx and spacesyntax analyses) on input data. 
 
 Digitization of street network:
+
 ![alt text](https://github.com/UAV-GeoLAB/MAP-Network-Analysis/blob/main/references/digitization-streetnetwork.png)
 
 Georeferencing:
+
 ![alt text](https://github.com/UAV-GeoLAB/MAP-Network-Analysis/blob/main/references/georefernce.png)
 
 Showing results of network analysis:
+
 ![alt text](https://github.com/UAV-GeoLAB/MAP-Network-Analysis/blob/main/references/results-spacesyntax.png)
 
 ## Dependencies:
