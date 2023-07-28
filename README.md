@@ -60,8 +60,8 @@ Please download also PostGIS extension for PostgreSQL - you can do it from Stack
 
 After installation, create database which will store digitized, georeferenced street networks and results of network analysis. You can do it using Postgres GUI application – pgAdmin.
 
-After you setup database, please specify database parameters in *API/db_params.py*.
-Finally, add path of Postgres *bin* directory (with Postgis files) to environment variable PATH. In this *bin* folder there will be GDAL/OGR dependencies necessary in our application.
+After you setup database, **please specify database parameters** in *API/db_params.py*.
+Finally, **add path of Postgres *bin* directory (with Postgis files) to environment variable PATH**. In this *bin* folder there will be GDAL/OGR dependencies necessary in our application.
 
 
 #### API – Python and FastAPI
