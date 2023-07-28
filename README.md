@@ -16,20 +16,29 @@ Showing results of network analysis:
 ![alt text](https://github.com/UAV-GeoLAB/MAP-Network-Analysis/blob/main/references/results-spacesyntax.png)
 
 ## Dependencies:
-- Leaflet 1.8.0(https://leafletjs.com/)
+- Leaflet 1.8.0(https://leafletjs.com/) – used in our system as the image viewer.
 - Leaflet plugins:
-    - Leaflet-IIIF (https://github.com/mejackreed/Leaflet-IIIF)
-    - Leaflet-Geoman (https://github.com/geoman-io/leaflet-geoman)
-- PostgreSQL (https://www.postgresql.org.pl/)
-- Python 3.7+ and libraries (see API/requirements.txt)
-- GDAL/OGR (https://live.osgeo.org/en/overview/gdal_overview.html)
+    - Leaflet-IIIF (https://github.com/mejackreed/Leaflet-IIIF) – plugin which allows to handle IIIF resources in Leaflet.
+    - Leaflet-Geoman (https://github.com/geoman-io/leaflet-geoman) – plugin which provides provide data vectorization functionality.
+- PostgreSQL (https://www.postgresql.org.pl/) – relational database used to store geospatial data assigned to images (e.g., vectorized street network, georeferencing data),
+- Python 3.7+ and libraries (see *API/requirements.txt*),
+- FastAPI (https://fastapi.tiangolo.com/) - Python web framework to communicate our web application with database.
+- GDAL/OGR (https://live.osgeo.org/en/overview/gdal_overview.html) – library used for georeferencing vector data.
 - DepthMapX SpaceSyntax Docker (https://github.com/digitalcityscience/space-syntax)
-- Cantaloupe (https://cantaloupe-project.github.io/)
+- Cantaloupe (https://cantaloupe-project.github.io/) – image server which serces raster data for various zoom levels in accordance with the IIIF standard.
 
 
 ## Architecture
 ![alt text](https://github.com/UAV-GeoLAB/MAP-Network-Analysis/blob/main/references/architecture-diagram.png)
-for storing digitized, georeferenced data (input data from user) and for storing results of network analysis
+**Description of components**:
+- Server side
+    - Image API – IIIF API/image server responsible for sharing images and interactively displaying raster images with deep zoom,
+    - Database – stores digitized, georeferenced data (input data from user) and  results of network analysis,
+    - API – allows communication with database and docker container for Space Syntax analysis.
+- Client side (Web Browser) consists of three main components
+    - Digitalization of street network,
+    - Georeferencing (acquisition of Ground Control Points),
+    - Displaying results of network analyses with possiblity to download them in GIS format (Shapefile).
 
 ## Deployment
 To deploy application, you need to install and setup a few components.
